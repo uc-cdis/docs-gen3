@@ -125,9 +125,7 @@ plugins:
       blog_toc: true
   - mkdocs-video:
       is_video: True
-  - encryptcontent:
-      password_inventory:
-        _global: 'gen3'
+
 extra:
   social:
     - icon: fontawesome/brands/linkedin
