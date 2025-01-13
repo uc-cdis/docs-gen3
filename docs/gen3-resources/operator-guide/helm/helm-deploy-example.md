@@ -23,7 +23,7 @@ We provide instructions for minimal deployment with or without an SSL certificat
 * Install kubectl (https://kubernetes.io/docs/tasks/tools/#kubectl)
 * Prepare to install Kind https://kind.sigs.k8s.io/docs/user/quick-start/ *(we include installation as part of the instructions below)*
 * Install Certbot (or some other tool to get your SSL Certificate)
-* You will need a host site you control
+* You will need a host site you control (we will use user.dev-site.net to signify this)
 * Install K9s (https://k9scli.io/) - this is used to give a visual view of what’s going on with your deployment
 
 ## Use Kind to set up a local Kubernetes cluster in Docker
@@ -160,7 +160,7 @@ It’s ready when the output indicates the condition is met.
     If you choose to deploy with an SSL certificate and you do not yet have one, follow the instructions in this section. If you already have an SSL certificate, you can skip to [Create a minimal values.yaml](#create-a-minimal-valuesyaml)
 
 
-You will need to have a host site that you own to proceed. Here, our host site is `sara.dev.planx-pla.net`.
+You will need to have a host site that you own to proceed. Here, our host site is `user.dev-site.net`.
 
 ### Certbot to generate a certificate
 
@@ -169,13 +169,13 @@ A certificate can be generated using [Certbot](https://certbot.eff.org/). You ca
 Once installed, you can run a commmand like this to generate a certificate:
 
 ```
-sudo certbot certonly --manual --preferred-challenges=dns -d sara.dev.planx-pla.net
+sudo certbot certonly --manual --preferred-challenges=dns -d user.dev-site.net
 ```
 
 Here is the expected output from this command. Note that it will ask you to create a DNS TXT record to verify domain ownership - don’t press Enter until you have verified that the DNS TXT record is published (see below)
 
 ```
-(base) saravolkdegarcia@Saras-MacBook-Pro ~ % sudo certbot certonly --manual --preferred-challenges=dns -d sara.dev.planx-pla.net
+(base) saravolkdegarcia@Saras-MacBook-Pro ~ % sudo certbot certonly --manual --preferred-challenges=dns -d user.dev-site.net
 Password:
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 Enter email address (used for urgent renewal and security notices)
@@ -195,16 +195,16 @@ EFF news, campaigns, and ways to support digital freedom.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 (Y)es/(N)o: n
 Account registered.
-Requesting a certificate for sara.dev.planx-pla.net
+Requesting a certificate for user.dev-site.net
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Please deploy a DNS TXT record under the name:
-_acme-challenge.sara.dev.planx-pla.net.
+_acme-challenge.user.dev-site.net.
 with the following value:
 0LiInLyaHawLgZHfRN_OA_oFUa6QhdtkDQo6P-47lkE
 Before continuing, verify the TXT record has been deployed. Depending on the DNS
 provider, this may take some time, from a few seconds to multiple minutes. You can
 check if it has finished deploying with aid of online tools, such as the Google
-Admin Toolbox: https://toolbox.googleapps.com/apps/dig/#TXT/_acme-challenge.sara.dev.planx-pla.net.
+Admin Toolbox: https://toolbox.googleapps.com/apps/dig/#TXT/_acme-challenge.user.dev-site.net.
 Look for one or more bolded line(s) below the line ';ANSWER'. It should show the
 value(s) you've just added.
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -234,8 +234,8 @@ Once you verify that you can see the record, then press Enter in your terminal t
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Press Enter to Continue
 Successfully received certificate.
-Certificate is saved at: /etc/letsencrypt/live/sara.dev.planx-pla.net/fullchain.pem
-Key is saved at:         /etc/letsencrypt/live/sara.dev.planx-pla.net/privkey.pem
+Certificate is saved at: /etc/letsencrypt/live/user.dev-site.net/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/user.dev-site.net/privkey.pem
 This certificate expires on 2024-12-31.
 These files will be updated when the certificate renews.
 NEXT STEPS:
@@ -258,7 +258,7 @@ A minimal values.yaml will have a `global` section with nested `hostname` and `t
 
 ```
 global:
-hostname: sara.dev.planx-pla.net
+hostname: user.dev-site.net
 
     tls:
         key: |
@@ -277,8 +277,8 @@ hostname: sara.dev.planx-pla.net
 You can get the body of the key and the certificates using the `sudo cat` command with the path to your key and certificates, as indicated in the output at the end of the certificate creation:
 
 ```
-sudo cat /etc/letsencrypt/live/sara.dev.planx-pla.net/fullchain.pem
-sudo cat /etc/letsencrypt/live/sara.dev.planx-pla.net/privkey.pem
+sudo cat /etc/letsencrypt/live/user.dev-site.net/fullchain.pem
+sudo cat /etc/letsencrypt/live/user.dev-site.net/privkey.pem
 ```
 The output from these `cat` commands will be the key and certificate values that you need to add to the values.yaml.
 
@@ -393,10 +393,10 @@ Here, you want to look in the output for something in the address. If you don’
 
 ```
 NAME           CLASS    HOSTS                    ADDRESS     PORTS     AGE
-revproxy-dev   <none>   sara.dev.planx-pla.net   localhost   80, 443   6m41s
+revproxy-dev   <none>   user.dev-site.net   localhost   80, 443   6m41s
 ```
 
-Now, we need to point the sara.dev.planx-pla.net domain to localhost. To do that, we need to update the file `/etc/hosts`. You can use Nano or Vi or whatever your preferred command-line text editor is - here, we’re using Nano. Run this command from inside the Helm directory:
+Now, we need to point the user.dev-site.net domain to localhost. To do that, we need to update the file `/etc/hosts`. You can use Nano or Vi or whatever your preferred command-line text editor is - here, we’re using Nano. Run this command from inside the Helm directory:
 
 ```
 sudo nano /etc/hosts
@@ -448,7 +448,7 @@ To deploy an instance that allows a mock authorization, add these Arborist and F
 
 ```
 global:
-hostname: sara.dev.planx-pla.net
+hostname: user.dev-site.net
 
     tls:
     [key and cert info]
