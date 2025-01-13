@@ -87,7 +87,7 @@ They will both get setup and deployed with a Gen3 installation.
 
 ### Troubleshooting Fence
 
-There are some commons sql queries that can be [found here](https://github.com/uc-cdis/cdis-wiki/blob/master/dev/gen3-sql-queries.md#fence-database). *Note: this link is only visible to CTDS employees*
+There are some commons sql queries that can be [found here](https://github.com/uc-cdis/cloud-automation/blob/master/doc/gen3-sql-queries.md).
 
 ## Mock authorization (for development only)
 
