@@ -348,7 +348,11 @@ First, we can go to Docker Desktop and give the container more memory. But since
 
 ![Docker Desktop showing the container is allocated 8Gi memory](../img/docker-8gi.png)
 
-So instead, we can add to the minimal values.yaml to tell the portal to request less memory by using a pre-built image (which will require fewer resources from your computer).  Note that `portal` should be on the same level of indent as `global`.
+So instead, we can add to the minimal values.yaml to tell the portal to request less memory by using a pre-built image (which will require fewer resources from your computer). `portal` should be on the same level of indent as `global`.
+
+!!! info
+
+     The pre-built portal image is fine for development work. However, you cannot use this in production because **you cannot change the data dictionary** used for it. 
 
 ```
 global: ...
