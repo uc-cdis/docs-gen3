@@ -20,8 +20,6 @@ nav:
     - Gen3 Operator Guide - Deploy Gen3:
       - gen3-resources/operator-guide/index.md
       # homepage for operator guide, describes contents and links to different sections
-      #- Overview for Deploying Gen3: gen3-resources/operator-guide/deploy-gen3.md
-      # reviews all major steps for deploying Gen3 for production
       - Prerequisites for Deploying Gen3: gen3-resources/operator-guide/prerequisites.md
       - Pre-Deployment:
         - Infrastructure as Code:
@@ -55,14 +53,16 @@ nav:
         - Customize Gen3 Search: gen3-resources/operator-guide/customize-search.md
         # info from the current operator guide about configuring ETL and data explorer
         - Customize the Front End: gen3-resources/operator-guide/customize-frontend.md
-      - Tutorials:
-        - AWS IAM Global User: gen3-resources/operator-guide/tutorial_global_IAM_helm_user.md
-        - Fence Usersync Cronjob: gen3-resources/operator-guide/tutorial_fence_usersync_job.md
+      - Secrets and Security:
+        - Secrets Manager: gen3-resources/operator-guide/tutorial_secrets-mgr.md
+        - Create an AWS IAM Global User: gen3-resources/operator-guide/tutorial_global_IAM_helm_user.md
+      - Observability and Monitoring:
+        - Observability: gen3-resources/operator-guide/tutorial_observability.md
         - Grafana Alloy Helm Chart: gen3-resources/operator-guide/tutorial_alloy.md
         - Grafana Alloy and Faro: gen3-resources/operator-guide/tutorial_faro.md
-        - Production Deployment: gen3-resources/operator-guide/helm/helm-deploy-production-example.md
-        - Observability: gen3-resources/operator-guide/tutorial_observability.md
-        - Secrets Manager: gen3-resources/operator-guide/tutorial_secrets-mgr.md
+      - Microservice Jobs and Tutorials:
+        - About Jobs in Gen3: gen3-resources/operator-guide/tutorial_jobs_overview.md
+        - Fence Usersync Cronjob: gen3-resources/operator-guide/tutorial_fence_usersync_job.md
     - Gen3 Developer Guide - Extend Gen3:
       - gen3-resources/developer-guide/index.md
       - Gen3 Architecture:  gen3-resources/developer-guide/architecture.md
