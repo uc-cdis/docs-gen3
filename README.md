@@ -31,3 +31,7 @@ Note, you should not need to build the site using `mkdocs build`.
 ## Submit your PR
 
 Once you submit your PR, a member of the CTDS staff may request changes or ask you questions regarding your update.
+
+# Community Engagement
+
+If you would like to interact with the maintainers or the Gen3 community it is best to reach out over slack.  You can request access to our slack page [here](https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform).  You can also start a conversation on our [discussion board](https://forums.gen3.org/) or send an email to [support@gen3.org](mailto:support@gen3.org).
