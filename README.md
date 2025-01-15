@@ -6,7 +6,7 @@ This is the primary repository for public Gen3 technical documentation.  It is d
 ## How to request updates
 Create an issue within this repo to report on issues or gaps in the documentation.  If it is a large change you would like to see, it is better to start with an issue.  If it is something small please just create a PR and we can review that.
 
-## Step to submit a PR.
+## Steps to create your own changes and submit them
 
 If you know what changes are needed we encourage you to create a PR.  Follow these steps to make changes and verify them.
 
