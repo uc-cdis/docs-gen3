@@ -1,7 +1,7 @@
 #https://www.mkdocs.org/user-guide/configuration/#
 site_name: Gen3 Documentation
-site_url: https://gen3.org/
-repo_url: https://github.com/uc-cdis/gen3.org/tree/master/gen3
+site_url: https://docs.gen3.org
+repo_url: https://github.com/uc-cdis/docs-gen3
 nav:
   - Home: index.md
   - Demo @ gen3.datacommons.io: https://gen3.datacommons.io/
