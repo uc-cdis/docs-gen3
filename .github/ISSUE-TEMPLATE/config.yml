@@ -1,8 +1,0 @@
-blank_issues_enabled: false
-contact_links:
-  - name: Documentation
-    url: https://github.com/your-repo/your-project/wiki
-    about: Learn more about this project
-  - name: Support
-    url: https://github.com/your-repo/your-project/discussions
-    about: Get help with your issue or ask questions
