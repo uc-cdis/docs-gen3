@@ -1,5 +1,5 @@
 ---
-name: Create a Documentation Update Request
+name: Create a Documentation Update Request Mod
 description: Use this template for reporting issues or requesting changes to the Gen3 technical docs repo
 labels: Documentation Update
 assignees: []
@@ -28,8 +28,10 @@ body:
       label: "Are you willing and have the technical understanding to submit a PR that address this issue?"
       description: "Answer whether you are able to address with a PR"
       options:
-        - yes
-        - no
+        - label: "Yes"
+          value: yes
+        - label: "No"
+          value: no
 
   - type: textarea
     attributes:
@@ -43,5 +45,3 @@ body:
   - type: textarea
     attributes:
       label: "Include what the updated documentation should look like."
-
-  
