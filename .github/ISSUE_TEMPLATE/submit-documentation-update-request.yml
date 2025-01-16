@@ -1,5 +1,5 @@
 ---
-name: Create a Documentation Update Request Mod
+name: Create a Documentation Update Request
 description: Use this template for reporting issues or requesting changes to the Gen3 technical docs repo
 labels: Documentation Update
 assignees: []
@@ -12,36 +12,32 @@ body:
 
         - DO NOT post any Personally Identifiable Information (PII) in a GitHub Issue.  This includes IP address, hostnames, and tokens.
         - If you have questions please ask on our [Gen3 Community Slack channel](https://app.slack.com/client/T03A08KRA/C03A08KRY)! Not yet in the channel? Request Slack access [here](https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform).
-        - For bugs, specify impacted services (if known), versions, errors, and explain in detail what you are trying to do.  Please provide a minimally reproducible example.
         - Issue or Pull Request? Create only one, not both.  If unsure, start with an issue or ask on Slack.
 
   - type: input
     attributes:
       label: "What section of the documentation are you asking about?"
-      description: "Insert GitHub link or docs URL for documentation"
-      placeholder: "gen3-helm release 494"
+      description: "Insert GitHub or docs.gen3.org URL"
+      placeholder:
     validations:
-      required: true
 
   - type: dropdown
+    id: occurs_every_time
     attributes:
-      label: "Are you willing and have the technical understanding to submit a PR that address this issue?"
+      label: "Are you willing to and have the technical expertise to submit a PR that addresses this issue?"
       description: "Answer whether you are able to address with a PR"
       options:
-        - label: "Yes"
-          value: yes
-        - label: "No"
-          value: no
+        - "Yes"
+        - "No"
 
   - type: textarea
     attributes:
-      label: "Describe the issue with the documentation. This could be an error or a missing section or content."
+      label: "Describe the issue with the documentation. This could be an error, missing content, or something that is out of date."
       description: "Describe the issue"
-      placeholder: |
-         ...
+      placeholder:
     validations:
       required: true
 
   - type: textarea
     attributes:
-      label: "Include what the updated documentation should look like."
+      label: "Include what the updated documentation should look like. Provide as much detail as possible."
