@@ -4,75 +4,71 @@ site_url: https://docs.gen3.org
 repo_url: https://github.com/uc-cdis/docs-gen3
 nav:
   - Home: index.md
-  - Demo @ gen3.datacommons.io: https://gen3.datacommons.io/
-  - Resources:
-    - gen3-resources/index.md # this is the "home page" for the New Resources page
-      # contains an outline for these sections, and what they cover.
-      # also some sort of figure
-    - gen3-resources/glossary.md
-    - Gen3 User Guide:
-      - gen3-resources/user-guide/index.md # user guide home page, describing the contents of the user guide and linking to sections
-      - Search for Data: gen3-resources/user-guide/search.md
-      - Access Data Files: gen3-resources/user-guide/access-data.md
-      - Analyze Data: gen3-resources/user-guide/analyze-data.md
-      - Data Portal:  gen3-resources/user-guide/portal.md
-      - Use the API: gen3-resources/user-guide/using-api.md
-    - Gen3 Operator Guide - Deploy Gen3:
-      - gen3-resources/operator-guide/index.md
-      # homepage for operator guide, describes contents and links to different sections
-      - Prerequisites for Deploying Gen3: gen3-resources/operator-guide/prerequisites.md
-      - Pre-Deployment:
-        - Infrastructure as Code:
-          - Infrastructure as Code - Overview: gen3-resources/operator-guide/iac-overview.md
-          - Terraform: gen3-resources/operator-guide/iac-terraform.md
-          - Terragrunt: gen3-resources/operator-guide/iac-terragrunt.md
-          - Atlantis: gen3-resources/operator-guide/iac-atlantis.md
-        - Prepare SSL Certificate: gen3-resources/operator-guide/ssl-cert.md
-        - Authentication Methods: gen3-resources/operator-guide/gen3-authn-methods.md
-      - Setup Gen3 (Configure and Deploy) with Helm:
-        - gen3-resources/operator-guide/helm/index.md
-        - Deployment Overview: gen3-resources/operator-guide/helm/helm-deploy-overview.md
-        - Example - Minimal Local Deployment: gen3-resources/operator-guide/helm/helm-deploy-example.md
-        - Example - Production Deployment: gen3-resources/operator-guide/helm/helm-deploy-production-example.md
-        - Databases in Gen3 Helm charts: gen3-resources/operator-guide/helm/helm-deploy-databases.md
-        - Configure services with Helm:
-          - gen3-resources/operator-guide/helm/helm-config/index.md
-          - AuthN/AuthZ: gen3-resources/operator-guide/helm/helm-config/helm-config-auth.md
-          - Data-related Services: gen3-resources/operator-guide/helm/helm-config/helm-config-data-svcs.md
-          - Front End: gen3-resources/operator-guide/helm/helm-config/helm-config-frontend.md
-          - Workspaces: gen3-resources/operator-guide/helm/helm-config/helm-config-workspaces.md
-          - Revproxy: gen3-resources/operator-guide/helm/helm-config/helm-config-revproxy.md
-      - Post-Deployment:
-        - Create Data Dictionary: gen3-resources/operator-guide/create-data-dictionary.md
-        # contains info about creating (and maintaining?) a data dictionary
-        - Submit Data:
-          - Structured Data: gen3-resources/operator-guide/submit-structured-data.md
-          - Unstructured Data: gen3-resources/operator-guide/submit-unstructured-data.md
-          - Semi-structured data: gen3-resources/operator-guide/submit-semi-structured-data.md
-          - Controlling data authorization: gen3-resources/operator-guide/authorization.md
-        - Customize Gen3 Search: gen3-resources/operator-guide/customize-search.md
-        # info from the current operator guide about configuring ETL and data explorer
-        - Customize the Front End: gen3-resources/operator-guide/customize-frontend.md
-      - Secrets and Security:
-        - Secrets Manager: gen3-resources/operator-guide/tutorial_secrets-mgr.md
-        - Create an AWS IAM Global User: gen3-resources/operator-guide/tutorial_global_IAM_helm_user.md
-      - Observability and Monitoring:
-        - Observability: gen3-resources/operator-guide/tutorial_observability.md
-        - Grafana Alloy Helm Chart: gen3-resources/operator-guide/tutorial_alloy.md
-        - Grafana Alloy and Faro: gen3-resources/operator-guide/tutorial_faro.md
-      - Microservice Jobs and Tutorials:
-        - About Jobs in Gen3: gen3-resources/operator-guide/tutorial_jobs_overview.md
-        - Fence Usersync Cronjob: gen3-resources/operator-guide/tutorial_fence_usersync_job.md
-    - Gen3 Developer Guide - Extend Gen3:
-      - gen3-resources/developer-guide/index.md
-      - Gen3 Architecture:  gen3-resources/developer-guide/architecture.md
-      - Gen3 Microservices:  gen3-resources/developer-guide/microservices.md
-      - Contribute Code to Gen3: gen3-resources/developer-guide/contribute.md
-  - Community: gen3-resources/community.md
-  - Contact: contact.md
+  - About Gen3: gen3-resources/about.md
+  - User Guide:
+    - gen3-resources/user-guide/index.md # user guide home page, describing the contents of the user guide and linking to sections
+    - Search for Data: gen3-resources/user-guide/search.md
+    - Access Data Files: gen3-resources/user-guide/access-data.md
+    - Analyze Data: gen3-resources/user-guide/analyze-data.md
+    - Data Portal:  gen3-resources/user-guide/portal.md
+    - Use the API: gen3-resources/user-guide/using-api.md
+  - Operator Guide - Deploy Gen3:
+    - gen3-resources/operator-guide/index.md
+    # homepage for operator guide, describes contents and links to different sections
+    - Prerequisites for Deploying Gen3: gen3-resources/operator-guide/prerequisites.md
+    - Pre-Deployment:
+      - Infrastructure as Code:
+        - Infrastructure as Code - Overview: gen3-resources/operator-guide/iac-overview.md
+        - Terraform: gen3-resources/operator-guide/iac-terraform.md
+        - Terragrunt: gen3-resources/operator-guide/iac-terragrunt.md
+        - Atlantis: gen3-resources/operator-guide/iac-atlantis.md
+      - Prepare SSL Certificate: gen3-resources/operator-guide/ssl-cert.md
+      - Authentication Methods: gen3-resources/operator-guide/gen3-authn-methods.md
+    - Setup Gen3 (Configure and Deploy) with Helm:
+      - gen3-resources/operator-guide/helm/index.md
+      - Deployment Overview: gen3-resources/operator-guide/helm/helm-deploy-overview.md
+      - Example - Minimal Local Deployment: gen3-resources/operator-guide/helm/helm-deploy-example.md
+      - Example - Production Deployment: gen3-resources/operator-guide/helm/helm-deploy-production-example.md
+      - Databases in Gen3 Helm charts: gen3-resources/operator-guide/helm/helm-deploy-databases.md
+      - Configure services with Helm:
+        - gen3-resources/operator-guide/helm/helm-config/index.md
+        - AuthN/AuthZ: gen3-resources/operator-guide/helm/helm-config/helm-config-auth.md
+        - Data-related Services: gen3-resources/operator-guide/helm/helm-config/helm-config-data-svcs.md
+        - Front End: gen3-resources/operator-guide/helm/helm-config/helm-config-frontend.md
+        - Workspaces: gen3-resources/operator-guide/helm/helm-config/helm-config-workspaces.md
+        - Revproxy: gen3-resources/operator-guide/helm/helm-config/helm-config-revproxy.md
+    - Post-Deployment:
+      - Create Data Dictionary: gen3-resources/operator-guide/create-data-dictionary.md
+      # contains info about creating (and maintaining?) a data dictionary
+      - Submit Data:
+        - Structured Data: gen3-resources/operator-guide/submit-structured-data.md
+        - Unstructured Data: gen3-resources/operator-guide/submit-unstructured-data.md
+        - Semi-structured data: gen3-resources/operator-guide/submit-semi-structured-data.md
+        - Controlling data authorization: gen3-resources/operator-guide/authorization.md
+      - Customize Gen3 Search: gen3-resources/operator-guide/customize-search.md
+      # info from the current operator guide about configuring ETL and data explorer
+      - Customize the Front End: gen3-resources/operator-guide/customize-frontend.md
+    - Secrets and Security:
+      - Secrets Manager: gen3-resources/operator-guide/tutorial_secrets-mgr.md
+      - Create an AWS IAM Global User: gen3-resources/operator-guide/tutorial_global_IAM_helm_user.md
+    - Observability and Monitoring:
+      - Observability: gen3-resources/operator-guide/tutorial_observability.md
+      - Grafana Alloy Helm Chart: gen3-resources/operator-guide/tutorial_alloy.md
+      - Grafana Alloy and Faro: gen3-resources/operator-guide/tutorial_faro.md
+    - Microservice Jobs and Tutorials:
+      - About Jobs in Gen3: gen3-resources/operator-guide/tutorial_jobs_overview.md
+      - Fence Usersync Cronjob: gen3-resources/operator-guide/tutorial_fence_usersync_job.md
+  - Developer Guide - Extend Gen3:
+    - gen3-resources/developer-guide/index.md
+    - Gen3 Architecture:  gen3-resources/developer-guide/architecture.md
+    - Gen3 Microservices:  gen3-resources/developer-guide/microservices.md
+    - Contribute Code to Gen3: gen3-resources/developer-guide/contribute.md
   - Blog:
     - blog/index.md
   - Frequently Asked Questions: gen3-resources/faq.md
+  - gen3-resources/glossary.md
+  - Demo @ gen3.datacommons.io: https://gen3.datacommons.io/
+
 
 theme:
   favicon: img/Gen3-3.ico
@@ -120,7 +116,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.tilde
   - pymdownx.tasklist:
-      custom_checkbox: true  
+      custom_checkbox: true
   - pymdownx.smartsymbols
   - pymdownx.emoji:
       emoji_generator: !!python/name:pymdownx.emoji.to_svg

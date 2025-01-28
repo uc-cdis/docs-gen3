@@ -1,4 +1,4 @@
-# Gen3 Glossary
+# Glossary
 
 ## Allow Lists
 An allow list is simply a list of users (identified based on your method of authentication) that controls which users have access to which data.  It is in the form of a user.yaml file that is maintained by the operator of your Gen3 system. Gaining access may require you to sign a Data Use Agreement.  Data access is granted at the program or project level.  
