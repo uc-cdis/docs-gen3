@@ -26,7 +26,7 @@ Learn how to contribute code and documentation improvements to Gen3 [here][contr
 
 
 ## Contact
-Check out the [contact page][contact page] for more information on how to engage with the Gen3 community and the code maintainers at CTDS.
+Check out the [contact page](about.md#contact-information) for more information on how to engage with the Gen3 community and the code maintainers at CTDS.
 
 ## Gen3 Videos
 
@@ -46,7 +46,6 @@ See a sample of the publications made possible by Gen3 systems [here][gen3 publi
 
 
 [code of conduct]: https://forums.gen3.org/t/faq-guidelines/5
-[contact page]: ../contact.md
 [gen3 youtube]: https://www.youtube.com/channel/UCMCwQy4EDd1BaskzZgIOsNQ/featured
 [gen3 github]: https://github.com/uc-cdis
 [gen3 publications]: https://gen3.org/gen3refs/

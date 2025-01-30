@@ -2,50 +2,17 @@
 
 Gen3 is a data platform for building data commons and data meshes. The Gen3 platform consists of open-source software services that support the emergence of healthy data ecosystems by enabling the creation of cloud-based data resources, including data commons and analysis workspaces. Gen3 aims to accelerate and democratize the process of scientific discovery by making it easy to manage, analyze, harmonize, and share large and complex datasets in the cloud.
 
-You can find more information about Gen3 on [gen3.org](gen3.org).
+You can find more information about Gen3 on [gen3.org](https://gen3.org/).
 
 ## Powered by Gen3
 
 Gen3 is used by dozen of projects around the world to manage and analyze biomedical data.  You can find an incomplete list of current Gen3 projects [here](https://gen3.org/powered-by-gen3/).
 
+## License
 
-## Gen3 Community
+Gen3 is licensed under an Apache 2.0 license, which is a permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
 
-Learn from our community members and engage in technical discussions. Gen3 is an open-source product and we rely on and encourage our community of users, developers, and operators to actively participate in community activities.
-
-### Code of Conduct
-
-The Gen3 Community values respect and professionalism. Our purpose is to share knowledge and make everyone feel safe and included.  Please review our code of conduct [here][code of conduct].
-
-### Community Events
-
-About every other month, there is a virtual Gen3 Forum for the community of Gen3 developers, operators, sponsors and users of Gen3 data platforms. These events aim to share information about how to set up new Gen3 instances, build a community that can help each other, and create clear paths for support from the Gen3 core development team.
-
-Check out the [community events page][community page] for upcoming and past events.
-
-### Source Code
-
-View repositories for all Gen3 services on [GitHub][gen3 github].
-
-### Release Notes
-
-Gen3 releases typically happen every month. The latest release notes can be found [here][release notes].
-
-### Contribute to Gen3
-
-Learn how to contribute code and documentation improvements to Gen3 [here][contributor guidelines].
-
-
-### Gen3 Videos
-
-Explore our videos and webinars on [YouTube][gen3 youtube] to learn more about Gen3 and our community.
-
-
-### Gen3 Publications
-
-See a sample of the publications made possible by Gen3 systems [here][gen3 publications].
-
-
+The full text of the license can be found in each Gen3 repository and [here](https://github.com/apache/.github/blob/main/LICENSE).
 
 
 

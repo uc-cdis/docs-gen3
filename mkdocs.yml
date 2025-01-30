@@ -5,6 +5,7 @@ repo_url: https://github.com/uc-cdis/docs-gen3
 nav:
   - Home: index.md
   - About Gen3: gen3-resources/about.md
+  - Gen3 Community: gen3-resources/community.md
   - User Guide:
     - gen3-resources/user-guide/index.md # user guide home page, describing the contents of the user guide and linking to sections
     - Search for Data: gen3-resources/user-guide/search.md

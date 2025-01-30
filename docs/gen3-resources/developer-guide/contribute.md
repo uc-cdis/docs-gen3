@@ -16,11 +16,11 @@ You may also [create an issue](#create-an-issue) in GitHub.
 
 #### Technical documentation
 
-Gen3 documentation is constantly evolving.  If you see an error or omission we would greatly appreciate a pull request with an update.  Just as with submitting any [Gen3 code pull requests](#submit-a-pull-request), feel free to reach out in advance to discuss a proposed documentation update.
+Gen3 documentation is constantly evolving. All content is stored in our [documentation repo](https://github.com/uc-cdis/docs-gen3).  There you can find instructions about how to report issues or gaps in the documentation.  You are also encouraged to modify the documentation files directly and submit a pull request for us to review.
 
 #### Tutorials
 
-Beyond the basic documentation, having an end to end tutorial on a particular topic can extraordinarily helpful.  Please feel free to suggest such a tutorial.
+Beyond the basic documentation, having an end to end tutorial on a particular topic can extraordinarily helpful.  Please feel free to suggest a tutorial, which could be in the form a blog post.
 
 ### Participate in community events or on Slack
 
@@ -33,7 +33,7 @@ Your participation in the community Slack channel is also very much appreciated.
 
 If you have an idea for a new feature or a bugfix, it is best to communicate with the University of Chicago Center for Translational Data Science (CTDS) developers early. Slack is a great forum for getting early feedback on an idea. You may also create an issue in GitHub. Be sure to browse through existing GitHub issues and if one seems related, comment on it.
 
-Once you are ready, create a GitHub issue in whichever [Gen3 repository](https://github.com/orgs/uc-cdis/repositories) is appropriate .  If you are not sure which repo is the correct location please utilize the [Gen3 Community Repo](https://github.com/uc-cdis/gen3-community).
+Once you are ready, create a GitHub issue in whichever [Gen3 repository](https://github.com/orgs/uc-cdis/repositories) is appropriate.  If you are not sure which repo is the correct location please utilize the [Gen3 Community Repo](https://github.com/uc-cdis/gen3-community).
 
 
 #### Issue Lifecycle
