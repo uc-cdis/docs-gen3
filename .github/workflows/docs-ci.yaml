@@ -19,7 +19,7 @@ jobs:
         with:
           python-version: 3.x
       - name: Add CNAME file
-        run: echo 'docs.gen3.org' > ./build/CNAME
+        run: echo 'docs.gen3.org' > ./CNAME
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
       - uses: actions/cache@v4
         with:
