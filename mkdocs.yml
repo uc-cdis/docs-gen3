@@ -101,6 +101,8 @@ theme:
         name: Switch to light mode
 extra_css:
   - stylesheets/extra.css
+extra_javascript:
+  - js/dd.js
 use_directory_urls: true
 markdown_extensions:
   - admonition
