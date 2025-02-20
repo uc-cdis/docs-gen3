@@ -15,7 +15,7 @@ window.DD_RUM.onReady(function () {
         // Specify a version number to identify the deployed version of your application in Datadog
         // version: '1.0.0',
         sessionSampleRate: 100,
-        sessionReplaySampleRate: 20,
+        sessionReplaySampleRate: 0,
         defaultPrivacyLevel: 'mask-user-input',
     });
 })
