@@ -53,7 +53,6 @@ If the table is a list of files, there should be a button for downloading a JSON
 >Note: Some data commons have security measures in place that limit what environments users can access data files. For example, users may be required to download and analyze data files in a protected environment, such as a virtual machines (VM) in a virtual private cloud (VPC) or in the built-in Gen3 Workspace, which is accessed by clicking on “Workspace” in the top navigation bar of the data commons website. For more information on the Workspace, see the [documentation on how to access and use the Gen3 Workspace][Gen3 Workspace].
 
 
-
 ### Use the API
 All the functionality of the data portal is available by sending requests to the open APIs of the Gen3 system. Detailed API specifications of the Gen3 services can be browsed in [the developer documentation][Developer API specs].
 
@@ -299,6 +298,7 @@ A graphical model of the structured data of a data commons can be browsed by nav
 [API instructions]: search.md#use-the-api
 [Gen3 client]: access-data.md#download-files-using-the-gen3-client
 [Gen3 bulk download]: access-data.md#multiple-file-download-with-manifest
+[Gen3 Workspace]: analyze-data.md/#launch-workspace
 
 <!-- API section -->
 [Developer API specs]: ../developer-guide/microservices.md
@@ -307,6 +307,15 @@ A graphical model of the structured data of a data commons can be browsed by nav
 [Gen3Submission Python SDK class]: https://uc-cdis.github.io/gen3sdk-python/_build/html/submission.html
 [Using Gen3 SDK]: analyze-data.md#using-the-gen3-python-sdk
 [Gen3 SDK GitHub pg]: https://github.com/uc-cdis/gen3sdk-python
+[Guppy]: https://github.com/uc-cdis/guppy
+[Guppy download endpoint]: https://github.com/uc-cdis/guppy/blob/master/doc/download.md
+
+
+<!--Query Page -->
+[Query Page]: https://gen3.datacommons.io/query
+[gif Peregrine]: img/simple_query_2020.gif
+[GraphQL pagination]: (http://graphql.org/learn/pagination/)
+[GraphQL]: https://graphql.org/
 
 <!-- Submission page -->
 [submit_structured]: ../operator-guide/submit-structured-data.md
