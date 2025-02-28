@@ -147,7 +147,7 @@ https://gen3.datacommons.io/index/47c46ead-f6f5-4cc9-86b9-2354cafe8c64
 [Gen3 Submit Data]: ../operator-guide/submit-structured-data.md
 [learn GraphQL]: http://graphql.org/learn
 [Query_page_instructions]: portal.md/#query-page
-[microservice docs]: ../developer-guide/microservices.md
+[microservice docs]: ../developer-guide/key_repos.md
 [Sheepdog]: https://petstore.swagger.io/?url=https://raw.githubusercontent.com/uc-cdis/sheepdog/master/openapi/swagger.yml#/
 [Peregrine]: https://petstore.swagger.io/?url=https://raw.githubusercontent.com/uc-cdis/peregrine/master/openapis/swagger.yaml
 [Gen3 SDK-Python]: https://github.com/uc-cdis/gen3sdk-python

@@ -301,7 +301,7 @@ A graphical model of the structured data of a data commons can be browsed by nav
 [Gen3 Workspace]: analyze-data.md/#launch-workspace
 
 <!-- API section -->
-[Developer API specs]: ../developer-guide/microservices.md
+[Developer API specs]: ../developer-guide/key_repos.md
 [API documentation]: using-api.md
 [SDK doc pg]: https://uc-cdis.github.io/gen3sdk-python/_build/html/index.html
 [Gen3Submission Python SDK class]: https://uc-cdis.github.io/gen3sdk-python/_build/html/submission.html
@@ -314,7 +314,7 @@ A graphical model of the structured data of a data commons can be browsed by nav
 <!--Query Page -->
 [Query Page]: https://gen3.datacommons.io/query
 [gif Peregrine]: img/simple_query_2020.gif
-[GraphQL pagination]: (http://graphql.org/learn/pagination/)
+[GraphQL pagination]: http://graphql.org/learn/pagination/
 [GraphQL]: https://graphql.org/
 
 <!-- Submission page -->

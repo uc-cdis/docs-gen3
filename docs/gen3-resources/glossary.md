@@ -60,7 +60,6 @@ A simple list of most relevant microservices are included below.  For a descript
 * Fence
 * Guppy
 * Hatchery
-* Helm
 * Metadata Service (MDS)
 * Pelican
 * Peregrine
@@ -95,7 +94,7 @@ Gen3 workspaces are secure data analysis environments in the cloud that can acce
 [data dictionary overview]: operator-guide/create-data-dictionary.md
 [AggMDS]: operator-guide/customize-search.md#discovery-page
 [Data Portal User Guide]: user-guide/portal.md
-[Microservices]: developer-guide/microservices.md
+[Microservices]: developer-guide/key_repos.md
 [Gen3 client docs]: user-guide/access-data.md#installation-instructions
 [SDK docs]: user-guide/search.md#the-gen3-sdk
 [PFB GitHub]: https://github.com/uc-cdis/pypfb

@@ -62,7 +62,7 @@ nav:
   - Developer Guide - Extend Gen3:
     - gen3-resources/developer-guide/index.md
     - Gen3 Architecture:  gen3-resources/developer-guide/architecture.md
-    - Gen3 Microservices:  gen3-resources/developer-guide/microservices.md
+    - Key Repositories:  gen3-resources/developer-guide/key_repos.md
     - Contribute Code to Gen3: gen3-resources/developer-guide/contribute.md
   - Blog:
     - blog/index.md
