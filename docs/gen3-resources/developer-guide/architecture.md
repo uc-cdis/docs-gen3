@@ -9,7 +9,7 @@ The underlying software and APIs are designed from the ground up to be interoper
 
 > NOTE: While cloud-agnostic, we (the Center for Translational Data Science, maintainers of Gen3) use AWS internally for most instances of Gen3 we manage, and therefore some documentation may include AWS specific instructions.
 
-Gen3 can handle various categories of data based on their structure. 
+Gen3 can handle various categories of data based on their structure.
 
 **Unstructured** data represents files on a hard drive or cloud storage with no consistent schema. These data tend to represent either bulk clinical and phenotypic data in spreadsheet format or patient level data such as images or genomic sequencing files.
 
@@ -42,7 +42,7 @@ On the least integrated side of the spectrum, Gen3 may provide only dataset-leve
 
 Gen3 Framework Services are a minimal set of software that provide open APIs and UIs that form the foundation, or “framework”, for building systems. Such foundational support includes indexing data objects, associating metadata with the data objects, controlling user access to data via a policy engine, and providing a data discovery UI.
 
-Gen3 framework services can be deployed alone and other desired functionality can be built off the extensive open APIs. It is more common that they are deployed as part of a broader product like Gen3 Data Commons or a Gen3 Data Mesh.
+Gen3 Framework Services can be deployed alone and other desired functionality can be built off the extensive open APIs. It is more common that they are deployed as part of a broader product like Gen3 Data Commons or a Gen3 Data Mesh.
 
 Gen3 Framework Services aim to provide mechanisms to enable data to be fully Findable, Accessible, Interoperable, and Reusable (FAIR). One of the guiding principles of Gen3 as a whole, but most importantly the Gen3 Framework, is to use existing standards and solutions to common problems. This is why standards like OpenID Connect, OAuth 2.0, and GA4GH DRS have been adopted. We aim to adopt community standards and solutions when they provide an interoperable solution in an efficient way.
 
