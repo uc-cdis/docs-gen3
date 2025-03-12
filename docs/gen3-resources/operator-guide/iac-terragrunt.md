@@ -86,7 +86,7 @@ locals {
 }
 
 terraform {
-  source = "git::github.com/uc-cdis/gen3-terraform.git//tf_files-1.0/aws/commons?ref=master"
+  source = "git::github.com/uc-cdis/gen3-terraform.git//tf_files/aws/commons?ref=master"
 }
 
 # Include all settings from the root terragrunt.hcl file

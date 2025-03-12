@@ -172,7 +172,7 @@ terraform {
 
 
 module "commons" {
-  source = "git::github.com/uc-cdis/gen3-terraform.git//tf_files-1.0/aws/commons?ref=master"
+  source = "git::github.com/uc-cdis/gen3-terraform.git//tf_files/aws/commons?ref=master"
 
   vpc_name=var.vpc_name
   iam_role_name=var.iam_role_name
