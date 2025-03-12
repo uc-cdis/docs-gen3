@@ -145,13 +145,11 @@ extra:
   social:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/center-for-translational-data-science/
-    - icon: fontawesome/brands/x-twitter
-      link: https://x.com/UChicagoCTDS
-    - icon: fontawesome/brands/x-twitter
-      link: https://x.com/gen3data
     - icon: fontawesome/brands/slack
       link: https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/channel/UCMCwQy4EDd1BaskzZgIOsNQ/featured
     - icon: fontawesome/brands/github
       link: https://github.com/uc-cdis
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/ctds-uchicago.bsky.social
