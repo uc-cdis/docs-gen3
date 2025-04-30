@@ -150,7 +150,7 @@ The Explorer page is powered by Guppy, so it is already mostly configured once y
 
 #### Portal configuration
 
-The portal gitops.json must have the `dataExplorerConfig` field configured for the Explorer page to render properly. You can see more about [generally configuring the portal here](https://github.com/uc-cdis/data-portal/blob/master/docs/portal_config.md). See the [example default dataExplorerConfig values here](https://github.com/uc-cdis/gen3-helm/blob/master/helm/portal/values.yaml#L364).
+The portal gitops.json must have the `explorerConfig` field configured for the Explorer page to render properly. You can see more about [generally configuring the portal here](https://github.com/uc-cdis/data-portal/blob/master/docs/portal_config.md). See the [example default dataExplorerConfig values here](https://github.com/uc-cdis/gen3-helm/blob/master/helm/portal/values.yaml#L364).
 
 ### Discovery page
 
