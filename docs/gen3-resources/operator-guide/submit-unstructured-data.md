@@ -610,35 +610,48 @@ In the rare case that you need to upload the same file again, the success log fi
 
 #### Indexd records
 
-When files are successfully uploaded by the gen3-client, the software service indexd creates a record for that file in the file index database, which can be accessed at the /index endpoint. For example, if the file's GUID is `5bcd2a59-8225-44a1-9562-f74c324d8dec`, enter the following URL in a browser or request it via the API to view its indexd record: https://nci-crdc-demo.datacommons.io/index/5bcd2a59-8225-44a1-9562-f74c324d8dec.
+When files are successfully uploaded by the gen3-client, the software service indexd creates a record for that file in the file index database, which can be accessed at the /index endpoint. For example, if the file's GUID is `dg.OADC/59097e14-2c04-4cc2-96f2-9d81f1da2ecb`, enter the following URL in a browser or request it via the API to view its indexd record: https://gen3.datacommons.io/index/dg.OADC/59097e14-2c04-4cc2-96f2-9d81f1da2ecb.
 
 ```
 {
-   acl: [ ],
-   baseid: "d8dfffe8-ea07-4fff-9a2e-2405d4e061d7",
-   created_date: "2019-11-19T22:00:41.196521",
-   did: "5bcd2a59-8225-44a1-9562-f74c324d8dec",
-   file_name: "test.txt",
-   form: null,
- - hashes: {
-     crc: "daaadff6",
-     md5: "2d282102fa671256327d4767ec23bc6b",
-     sha1: "e6c4fbd4fe7607f3e6ebf68b2ea4ef694da7b4fe",
-     sha256: "649b8b471e7d7bc175eec758a7006ac693c434c8297c07db15286788c837154a",
-     sha512: "bf9bac8036ea00445c04e3630148fdec15aa91e20b753349d9771f4e25a4f68c82f9bd52f0a72ceaff5415a673dfebc91f365f8114009386c001f0d56c7015de"
-   },
-   metadata: { },
-   rev: "9e1436a6",
-   size: 21,
-   updated_date: "2019-11-19T22:00:41.196528",
-   uploader: "my-email@uchicago.edu",
- - urls: [
-     "s3://ncicrdcdemo-data-bucket/5bcd2a59-8225-44a1-9562-f74c324d8dec/test.txt"
-   ],
- - urls_metadata: {
-     s3://ncicrdcdemo-data-bucket/5bcd2a59-8225-44a1-9562-f74c324d8dec/test.txt: { }
-   },
-   version: null
+  "acl": [
+    "OpenAccess",
+    "CCLE"
+  ],
+  "authz": [
+    "/programs/OpenAccess/projects/CCLE"
+  ],
+  "baseid": "3f9e1af8-31a8-48b0-b4ea-e04a938e9ca1",
+  "content_created_date": null,
+  "content_updated_date": null,
+  "created_date": "2022-07-11T16:47:20.989103",
+  "description": null,
+  "did": "dg.OADC/59097e14-2c04-4cc2-96f2-9d81f1da2ecb",
+  "file_name": "CCLE_NP24.2009_Drug_data_2015.02.24.csv",
+  "form": null,
+  "hashes": {
+    "crc": "cc06bdf5",
+    "md5": "8358d8a5c0d96ef5a0982178c885e99e",
+    "sha1": "5b3a66e288faf7386edf939d98f215a928f9c202",
+    "sha256": "9dce1a7d4c27627bcb3b5c2e6d14873955aac2906e5d44ad344c265a491404e5",
+    "sha512": "18fbe8ee00311129b22b729107cbfd9a63ef18e3c22366d3c7909996b0c3d3f1b19c1606fffa0d33f336f4084ead3512cd599537979aa281b3c3ad208cd8de27"
+  },
+  "metadata": {
+
+  },
+  "rev": "fd770f06",
+  "size": 2393993,
+  "updated_date": "2022-07-11T16:54:41.813024",
+  "uploader": null,
+  "urls": [
+    "s3://oadc-data-bucket/dg.OADC/59097e14-2c04-4cc2-96f2-9d81f1da2ecb/CCLE_NP24.2009_Drug_data_2015.02.24.csv"
+  ],
+  "urls_metadata": {
+    "s3://oadc-data-bucket/dg.OADC/59097e14-2c04-4cc2-96f2-9d81f1da2ecb/CCLE_NP24.2009_Drug_data_2015.02.24.csv": {
+
+    }
+  },
+  "version": null
 }
 ```
 
@@ -649,11 +662,11 @@ Files that have been successfully uploaded now have a GUID associated with them,
 
 #### Removing unwanted uploaded files
 
-Before the files are mapped to a project's node in the data model, the files can be deleted both from indexd and from the cloud location by sending a delete request to the fence endpoint `/user/data/`. For example, to delete the file we checked in the index above, we'd send a delete API request to this URL: https://nci-crdc-demo.datacommons.io/user/data/5bcd2a59-8225-44a1-9562-f74c324d8dec
+Before the files are mapped to a project's node in the data model, the files can be deleted both from indexd and from the cloud location by sending a delete request to the fence endpoint `/user/data/`. For example, to delete the file we checked in the index above, we'd send a delete API request to this URL: https://gen3.datacommons.io/user/data/dg.OADC/59097e14-2c04-4cc2-96f2-9d81f1da2ecb
 
 For example, running [this script][delete unmapped files] will delete all the user's unmapped files from indexd and from the storage location using the fence endpoint:
 ```
-~> python delete_uploaded_files.py -a https://nci-crdc-demo.datacommons.io/ -u user@gen3.org -c ~/Downloads/demo-credentials.json
+~> python delete_uploaded_files.py -a https://gen3.datacommons.io -u user@gen3.org -c ~/Downloads/demo-credentials.json
 Found the following guids for uploader user@gen3.org: ['3d275025-8b7b-4f84-9165-72a8a174d642', '5bcd2a59-8225-44a1-9562-f74c324d8dec', '6cf194f1-c68e-4976-8ca4-a0ce9701a9f3', '956890a9-b8a7-4abd-b8f7-dd0020aaf562', '9bd009b6-e518-4fe5-9056-2b5cba163ca3']
 Successfully deleted GUID 3d275025-8b7b-4f84-9165-72a8a174d642
 Successfully deleted GUID 5bcd2a59-8225-44a1-9562-f74c324d8dec
