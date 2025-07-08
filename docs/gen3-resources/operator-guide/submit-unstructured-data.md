@@ -707,17 +707,17 @@ Users can automate the bulk upload of data files by providing the gen3-client wi
 Example of manifest.json (Minimal):
 
 ```
-{
- {
-   "object_id": "a12ff17c-2fc0-475a-9c21-50c19950b082"
- },
- {
-   "object_id": "b12ff17c-2fc0-475a-9c21-50c19950b082"
- },
- {
-   "object_id": "c12ff17c-2fc0-475a-9c21-50c19950b082"
- }
-}
+[
+  {
+    "object_id": "a12ff17c-2fc0-475a-9c21-50c19950b082"
+  },
+  {
+    "object_id": "b12ff17c-2fc0-475a-9c21-50c19950b082"
+  },
+  {
+    "object_id": "c12ff17c-2fc0-475a-9c21-50c19950b082"
+  }
+]
 ```
 
 The gen3-client will upload all the files in the provided manifest using the `gen3-client upload-multiple` command.
@@ -782,6 +782,6 @@ Working from the command line instructions are covered in the [Downloading Files
 [program and project]: submit-structured-data.md#order-of-node-submission
 
 
-<!-- Gen3 Client -- >
+<!-- Gen3 Client -->
 [client download]: ../user-guide/access-data.md#download-files-using-the-gen3-client
 [delete unmapped files]: https://github.com/uc-cdis/planx-bioinfo-tools/blob/master/submission_tool/delete_unmapped_files.py
