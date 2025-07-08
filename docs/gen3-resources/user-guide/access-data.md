@@ -202,7 +202,7 @@ Finished downloads/24d0be10-d164-48ad-aafa-9fcaac682df9 2570240 / 2570240 bytes 
 ```
 2. Configure a profile:
 ```
-gen3-client configure --profile=demo --cred=~/Downloads/demo-credentials.json --apiendpoint=https://gen3.datacommons.io`
+gen3-client configure --profile=demo --cred=~/Downloads/demo-credentials.json --apiendpoint=https://gen3.datacommons.io` 
 ```
 3. Check your authorization privileges:
 ```
