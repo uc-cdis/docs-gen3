@@ -1,0 +1,3121 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.gen3.org/gen3-resources/operator-guide/iac-terraform/">
+      
+      
+        <link rel="prev" href="../iac-overview/">
+      
+      
+        <link rel="next" href="../iac-terragrunt/">
+      
+      
+      <link rel="icon" href="../../../img/Gen3-3.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Terraform - Gen3 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gen3-terraform" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Gen3 Documentation" class="md-header__button md-logo" aria-label="Gen3 Documentation" data-md-component="logo">
+      
+  <img src="../../../img/gen3_new_logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Gen3 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Terraform
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="black" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="brh_platform" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0 8a5 5 0 0 1-5-5 5 5 0 0 1 5-5 5 5 0 0 1 5 5 5 5 0 0 1-5 5m0-12.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="brh_platform_dark" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9a3 3 0 0 1 3 3 3 3 0 0 1-3 3 3 3 0 0 1-3-3 3 3 0 0 1 3-3m0-4.5c5 0 9.27 3.11 11 7.5-1.73 4.39-6 7.5-11 7.5S2.73 16.39 1 12c1.73-4.39 6-7.5 11-7.5M3.18 12a9.821 9.821 0 0 0 17.64 0 9.821 9.821 0 0 0-17.64 0"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+
+    <!-- Custom link to Gen3.org (with an external link icon) -->
+    <div style="margin-right: 10px; display: flex; align-items: center;">
+      <a href="https://gen3.org/" class="md-header__button" aria-label="Gen3.org" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; font-size: 1.6em; font-weight: bold;">
+        Gen3.org
+        <!-- Insert your preferred external link icon here -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" style="margin-left: 5px;" viewBox="0 0 16 16"><g fill="currentColor" fill-rule="evenodd"><path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a.5.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5"/><path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z"/></g></svg>
+      </a>
+    </div>
+    <!-- End of custom link to Gen3.org with an external link icon -->
+
+
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/uc-cdis/docs-gen3" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Gen3 Documentation" class="md-nav__button md-logo" aria-label="Gen3 Documentation" data-md-component="logo">
+      
+  <img src="../../../img/gen3_new_logo_white.svg" alt="logo">
+
+    </a>
+    Gen3 Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/uc-cdis/docs-gen3" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Gen3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../community/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gen3 Community
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../user-guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Search for Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/access-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Access Data Files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/analyze-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Analyze Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/portal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Portal
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../user-guide/using-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Use the API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Operator Guide - Deploy Gen3
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Operator Guide - Deploy Gen3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prerequisites/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prerequisites for Deploying Gen3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pre-Deployment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Pre-Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_1" id="__nav_5_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure as Code
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Infrastructure as Code
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iac-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure as Code - Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Terraform
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Terraform
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gen3-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gen3 Terraform
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-terraform-from-gen3-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Terraform from Gen3-Terraform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Terraform from Gen3-Terraform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-terraform-as-a-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Terraform as a Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Terraform as a Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iac-terragrunt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Terragrunt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../iac-atlantis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Atlantis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssl-cert/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prepare SSL Certificate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gen3-authn-methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication Methods
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../helm/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Setup Gen3 (Configure and Deploy) with Helm
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Setup Gen3 (Configure and Deploy) with Helm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-deploy-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-deploy-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example - Minimal Local Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-deploy-production-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example - Production Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-deploy-databases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Databases in Gen3 Helm charts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../helm/helm-config/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Configure services with Helm
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4_6" id="__nav_5_4_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Configure services with Helm
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-config/helm-config-auth/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AuthN/AuthZ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-config/helm-config-data-svcs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data-related Services
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-config/helm-config-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Front End
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-config/helm-config-workspaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Workspaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../helm/helm-config/helm-config-revproxy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Revproxy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Post-Deployment
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Post-Deployment
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../create-data-dictionary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create Data Dictionary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_2" id="__nav_5_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Submit Data
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Submit Data
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../submit-structured-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Structured Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../submit-unstructured-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unstructured Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../submit-semi-structured-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Semi-structured data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authorization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Controlling data authorization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customize-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customize Gen3 Search
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customize-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customize the Front End
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Secrets and Security
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Secrets and Security
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_secrets-mgr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Secrets Manager
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_global_IAM_helm_user/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Create an AWS IAM Global User
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Observability and Monitoring
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Observability and Monitoring
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_observability/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Observability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_alloy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grafana Alloy Helm Chart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_faro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grafana Alloy and Faro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Microservice Jobs and Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            Microservice Jobs and Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_jobs_overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About Jobs in Gen3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tutorial_fence_usersync_job/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fence Usersync Cronjob
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../developer-guide/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Developer Guide - Extend Gen3
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Guide - Extend Gen3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gen3 Architecture
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/key_repos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Key Repositories
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../developer-guide/contribute/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contribute Code to Gen3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Archive
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/archive/2024/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2024
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/archive/2023/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2023
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Categories
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Categories
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/category/ctds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    CTDS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/category/operator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Operator
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Frequently Asked Questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Glossary
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://gen3.datacommons.io/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Demo @ gen3.datacommons.io
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#gen3-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Gen3 Terraform
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-terraform-from-gen3-terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Terraform from Gen3-Terraform
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Terraform from Gen3-Terraform">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-terraform-as-a-module" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Terraform as a Module
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running Terraform as a Module">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#maintenance_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Maintenance
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Terraform</h1>
+
+<div><h2 id="gen3-terraform">Gen3 Terraform<a class="headerlink" href="#gen3-terraform" title="Permanent link">¶</a></h2>
+<p><a href="https://github.com/uc-cdis/gen3-terraform"><strong>Gen3-terraform</strong></a> contains our terraform modules for deploying and managing cloud infrastructure necessary for running gen3 within AWS. The modules are organized into directories based on the version of terraform they correspond to, then the type of infrastructure they deploy. The <a href="https://github.com/uc-cdis/gen3-terraform/tree/master/tf_files_deprecated">tf_files_deprecated</a> directory contains our deprecated 0.11 versions of modules, while the <a href="https://github.com/uc-cdis/gen3-terraform/tree/master/tf_files">tf_files</a> directory contains our &gt;1.0 versions of modules, although we have been using version 1.2 of terraform with these modules, so we recommend using that version of terraform with these modules. Under these directories we break down into clouds and then individual portions of clouds. If using the latest terraform modules, the most important module will be the commons one, which will spin up all the necessary infrastructure for a gen3 commons. The other modules are used if you'd like to spin up individual components or supplementary infrastructure within a commons, like service accounts, AWS roles etc. It should go without saying, but you will need admin access to an AWS account to be able to run our terraform modules for AWS.</p>
+<h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">¶</a></h2>
+<p>There are are a few ways to utilize our terraform modules, which will largely depend on how many instances you plan to run and how hands off you want the maintenance to be. The following are a few options that we have utilized:</p>
+<ul>
+<li><strong>Running Terraform within the cloned repo</strong>: This option allows you to run terraform directly within the cloned repo, which is useful for testing and development. This option is not recommended for production use, as it is not as secure as the other options, and it is not as easy to maintain. This option is also not recommended if you plan to run multiple instances of gen3, as you will have to clone the repo for each instance, and it will be difficult to maintain the state files for each instance.</li>
+<li><strong>Referencing our Terraform modules within your own modules</strong>: This option allows you to reference our modules within your own modules, which is useful if you want to customize the modules to your needs. This option is recommended if you plan to run a few instances of gen3, as you can create a module for each instance, and it will be easier to maintain the state files for each instance. This option is also recommended if you want to customize the modules to your needs, as you can easily do so within your own modules.</li>
+<li><strong>Wrapping terraform with Terragrunt</strong>: This option allows you to wrap terraform with terragrunt, which is useful if you want to run many instances of gen3, as it will allow you to run terraform across multiple modules at once. This option also let's you set configuration heirarchally, so you can set configuration at the root level, and it will be inherited by all the modules, allowing you to perform standard maintanance across every instance with ease. This approach adds a new layer of complexity though, so it is only recommended if you plan on managing many instances of gen3.</li>
+<li><strong>Running terraform or terragrunt with Atlantis</strong>: This option can be used with the two above options, and it allows you to run terraform or terragrunt in a CI/CD pipeline, which is useful if you want to automate the deployment and maintenance of your gen3 instances. This option is recommended if you want to collaborate with others on the deployment and maintenance of your gen3 instances, as it allows you to easily review and approve changes to your infrastructure through github pr's.</li>
+</ul>
+<p>The terraform modules are the backbone of our infrastructure deployment, and there are many ways to utilize them effectively. We have provided a few examples of how we have utilized them, but we encourage you to explore other options as well, and find the one that works best for you. In the following sections we will go into detail on how to setup the above options, and how to utilize them to deploy and maintain your gen3 instances.</p>
+<h2 id="running-terraform-from-gen3-terraform">Running Terraform from Gen3-Terraform<a class="headerlink" href="#running-terraform-from-gen3-terraform" title="Permanent link">¶</a></h2>
+<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">¶</a></h3>
+<h4 id="downloads">Downloads<a class="headerlink" href="#downloads" title="Permanent link">¶</a></h4>
+<p>You will need to follow the process outlined in the <a href="https://github.com/uc-cdis/gen3-terraform/tree/master?tab=readme-ov-file#prerequisites"><strong>Terraform Getting Started</strong></a> page to download terraform. Once you have that downloaded you will need to clone our <a href="https://github.com/uc-cdis/gen3-terraform"><strong>gen3-terraform repo</strong></a>. You will also need to install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html"><strong>AWS CLI</strong></a> to let terraform interact with AWS. Depending on the deployments you run, you may also need to install <a href="https://kubernetes.io/docs/tasks/tools/"><strong>kubectl</strong></a> and <a href="https://www.postgresql.org/download/"><strong>postgres</strong></a>.</p>
+<h4 id="cloud-credentials">Cloud Credentials<a class="headerlink" href="#cloud-credentials" title="Permanent link">¶</a></h4>
+<p>You will need to configure your AWS CLI to have admin access to your account, that way terraform can deploy the necessary infrastructure within your account. There are a few ways to accomplish this, but the easiest way is to create a new IAM user, attach the "arn:aws:iam::aws:policy/AdministratorAccess" to the user and then create a access key/id. Once you have the key and secret you will need to create a file at ~/.aws/credentials and add the following.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="o">[</span>default<span class="o">]</span>
+<span class="nv">aws_access_key_id</span><span class="o">=</span>&lt;access<span class="w"> </span>key&gt;
+<span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;secret<span class="w"> </span>key&gt;
+</code></pre></div>
+<p>This access can be verified by running the following.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+</code></pre></div>
+<p>If it returns the username of your user, then your credentials are properly configured.</p>
+<h3 id="deployment">Deployment<a class="headerlink" href="#deployment" title="Permanent link">¶</a></h3>
+<h4 id="prepare-the-deployment">Prepare the deployment<a class="headerlink" href="#prepare-the-deployment" title="Permanent link">¶</a></h4>
+<p>To run terraform directly from the gen3-terraform repo you'll need to start by navigating to the directory of the module you want to use. We recommend using the terraform 1.0 <a href="https://github.com/uc-cdis/gen3-terraform/tree/master/tf_files/aws/commons"><strong>commons module</strong></a>. This will provision all the necessary config for a production gen3 instance. If you just want to create a more basic development cluster you can use <a href="https://github.com/uc-cdis/gen3-terraform/tree/master/tf_files/aws/generic_commons"><strong>this module</strong></a> instead.</p>
+<p>Once you're in the correct directory, you'll want to make a couple supplemental files to tell terraform how to store the information about the state of your deployment. Create a provider.tf file to tell terraform which cloud we are using.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>provider<span class="w"> </span><span class="s2">"aws"</span><span class="w"> </span><span class="o">{}</span>
+</code></pre></div>
+<p>Next create a backend.tf file, to tell terraform where to store the state file in s3.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>terraform<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>backend<span class="w"> </span><span class="s2">"s3"</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"s3 bucket name"</span>
+<span class="w">    </span><span class="nv">encrypt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"true"</span>
+<span class="w">    </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"directory in bucket/terraform.tfstate"</span>
+<span class="w">    </span><span class="nv">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>
+<p>Next take a look at the variables.tf file to see the possible variables you can change. To set the variables you can edit the default values in this file, or more ideally, you can create a config.tfvars file which will set the values for the variables. The file will look like this.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="nv">vpc_name</span><span class="o">=</span><span class="s2">"your commons name"</span>
+<span class="nv">aws_region</span><span class="o">=</span><span class="s2">"us-east-1"</span>
+...
+</code></pre></div>
+<p>Once that is all setup you can proceed to running terraform.</p>
+<h4 id="running-terraform">Running terraform<a class="headerlink" href="#running-terraform" title="Permanent link">¶</a></h4>
+<p>Terraform will run in 2 parts, an initial plan and then an apply. This allows you to see the changes to your infrastructure to prevent unwanted changes that may affect the uptime of your application. Initially it should show only additions, but as you perform maintenance you will likely want to look at the plan more closely to ensure important resources are not deleted or modified.</p>
+<p>To create a terraform plan, you can run the following.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars
+</code></pre></div>
+<p>Terraform should automatically pull in all the configuration from any files with a .tf extension in the current directory, as well as all references to the modules referenced in those files. The -var-file flag says to use the variables within the config.tfvars as variables within the module. After running this you should see a plan with a few hundred resources being added to your account.</p>
+<p>The next step is to apply these changes if you're happy with them. To do that you can run a similar command, but change plan to apply.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars
+</code></pre></div>
+<p>It will ask you if you want to commit these changes and if you approve them then terraform will run for a while and create the resources.</p>
+<h4 id="note">Note<a class="headerlink" href="#note" title="Permanent link">¶</a></h4>
+<p>Terraform may time out creating resources or run into errors. If it does, it can be normal due to long provisioning processes and race conditions. If you see errors run apply a couple more times and if the errors persist, reach out over our community slack channel ffor assistance.</p>
+<h3 id="maintenance">Maintenance<a class="headerlink" href="#maintenance" title="Permanent link">¶</a></h3>
+<h4 id="changing-infrastructure">Changing Infrastructure<a class="headerlink" href="#changing-infrastructure" title="Permanent link">¶</a></h4>
+<p>The steps for performing maintenance are similar to deployment. You will need to access the cloned repo and go to the directory where you ran terraform. This will contain all the configuration you setup as well as a reference to your state file. If you don't have this, you can always recreate it from scratch and as long as your state file still exists in the S3 bucket you configured, everything will work as normal.</p>
+<p>Once you are in the properly prepped repo, you can make a change to the config.tfvars file, for example changing eks_version from 1.24 to 1.25 to ugrade EKS. After you make that change run a plan, although this time you will want to check the plan more carefully to make sure only the change you intend to make is happening, and run an apply.</p>
+<h4 id="destroying-your-infrastructure">Destroying Your Infrastructure<a class="headerlink" href="#destroying-your-infrastructure" title="Permanent link">¶</a></h4>
+<p>To destroy your infrastructure you can run the exact same commands as the plan and apply, only you will add a --destroy flag to the end.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars<span class="w"> </span>--destroy
+terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars<span class="w"> </span>--destroy
+</code></pre></div>
+<p>This will let you see everything that will be destroyed and once you apply the change the destruction will commence.</p>
+<h2 id="running-terraform-as-a-module">Running Terraform as a Module<a class="headerlink" href="#running-terraform-as-a-module" title="Permanent link">¶</a></h2>
+<h3 id="prerequisites_1">Prerequisites<a class="headerlink" href="#prerequisites_1" title="Permanent link">¶</a></h3>
+<h4 id="downloads_1">Downloads<a class="headerlink" href="#downloads_1" title="Permanent link">¶</a></h4>
+<p>You will need to follow the process outlined in the <a href="https://github.com/uc-cdis/gen3-terraform/tree/master?tab=readme-ov-file#prerequisites"><strong>Terraform Getting Started</strong></a> page to download terraform. Once you have that downloaded you will need to clone our <a href="https://github.com/uc-cdis/gen3-terraform/tree/master/tf_files/aws/commons"><strong>gen3-terraform repo</strong></a>. You will also need to install the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html"><strong>AWS CLI</strong></a> to let terraform interact with AWS. Depending on the deployments you run, you may also need to install <a href="https://kubernetes.io/docs/tasks/tools/"><strong>kubectl</strong></a> and <a href="https://www.postgresql.org/download/"><strong>postgres</strong></a>.</p>
+<h4 id="cloud-credentials_1">Cloud Credentials<a class="headerlink" href="#cloud-credentials_1" title="Permanent link">¶</a></h4>
+<p>You will need to configure your AWS CLI to have admin access to your account, that way terraform can deploy the necessary infrastructure within your account. There are a few ways to accomplish this, but the easiest way is to create a new IAM user, attach the "arn:aws:iam::aws:policy/AdministratorAccess" to the user and then create a access key/id. Once you have the key and secret you will need to create a file at ~/.aws/credentials and add the following.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code><span class="o">[</span>default<span class="o">]</span>
+<span class="nv">aws_access_key_id</span><span class="o">=</span>&lt;access<span class="w"> </span>key&gt;
+<span class="nv">aws_secret_access_key</span><span class="o">=</span>&lt;secret<span class="w"> </span>key&gt;
+</code></pre></div>
+<p>This access can be verified by running the following.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+</code></pre></div>
+<p>If it returns the username of your user, then your credentials are properly configured.</p>
+<h3 id="deployment_1">Deployment<a class="headerlink" href="#deployment_1" title="Permanent link">¶</a></h3>
+<h4 id="prepare-the-deployment_1">Prepare the deployment<a class="headerlink" href="#prepare-the-deployment_1" title="Permanent link">¶</a></h4>
+<p>To run terraform by referencing our modules from your own you'll need to start by creating a terraform repo, or utilizing one you already have. We recommend using the terraform 1.0 <a href="https://github.com/uc-cdis/gen3-terraform/tree/master/tf_files/aws/commons"><strong>commons module</strong></a>. This will provision all the necessary config for a production gen3 instance. If you just want to create a more basic development cluster you can use <a href="https://github.com/uc-cdis/gen3-terraform/tree/master/tf_files/aws/generic_commons"><strong>this module</strong></a> instead.</p>
+<p>Once you decide the module you want to use you'll want to create a .tf file that references our module, making sure to include the reference to the github repo as well as the variables you'll be passing into the module. Since you will likely want to use the module as is, you will likely want to pass in every variable. It should look similar to the following.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>provider<span class="w"> </span><span class="s2">"aws"</span><span class="w"> </span><span class="o">{}</span>
+
+terraform<span class="w"> </span><span class="o">{</span>
+<span class="w">  </span>backend<span class="w"> </span><span class="s2">"s3"</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="nv">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"s3 bucket"</span>
+<span class="w">    </span><span class="nv">encrypt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"true"</span>
+<span class="w">    </span><span class="nv">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"directory in bucket/terraform.tfstate"</span>
+<span class="w">    </span><span class="nv">region</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"us-east-1"</span>
+<span class="w">  </span><span class="o">}</span>
+<span class="o">}</span>
+
+
+module<span class="w"> </span><span class="s2">"commons"</span><span class="w"> </span><span class="o">{</span>
+<span class="w">  </span><span class="nb">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"git::github.com/uc-cdis/gen3-terraform.git//tf_files/aws/commons?ref=master"</span>
+
+<span class="w">  </span><span class="nv">vpc_name</span><span class="o">=</span>var.vpc_name
+<span class="w">  </span><span class="nv">iam_role_name</span><span class="o">=</span>var.iam_role_name
+<span class="w">  </span><span class="nv">vpc_cidr_block</span><span class="o">=</span>var.vpc_cidr_block
+<span class="w">  </span><span class="nv">vpc_flow_logs</span><span class="o">=</span>var.vpc_flow_logs
+<span class="w">  </span><span class="nv">vpc_flow_traffic</span><span class="o">=</span>var.vpc_flow_traffic
+<span class="w">  </span><span class="nv">aws_region</span><span class="o">=</span>var.aws_region
+<span class="w">  </span><span class="nv">aws_cert_name</span><span class="o">=</span>var.aws_cert_name
+<span class="w">  </span><span class="nv">csoc_account_id</span><span class="o">=</span>var.csoc_account_id
+<span class="w">  </span><span class="nv">peering_cidr</span><span class="o">=</span>var.peering_cidr
+<span class="w">  </span><span class="nv">fence_db_size</span><span class="o">=</span>var.fence_db_size
+<span class="w">  </span><span class="nv">sheepdog_db_size</span><span class="o">=</span>var.sheepdog_db_size
+<span class="w">  </span><span class="nv">indexd_db_size</span><span class="o">=</span>var.indexd_db_size
+<span class="w">  </span><span class="nv">db_password_fence</span><span class="o">=</span>var.db_password_fence
+<span class="w">  </span><span class="nv">db_password_peregrine</span><span class="o">=</span>var.db_password_peregrine
+<span class="w">  </span><span class="nv">db_password_sheepdog</span><span class="o">=</span>var.db_password_sheepdog
+<span class="w">  </span><span class="nv">db_password_indexd</span><span class="o">=</span>var.db_password_indexd
+<span class="w">  </span><span class="nv">portal_app</span><span class="o">=</span>var.portal_app
+<span class="w">  </span><span class="nv">fence_snapshot</span><span class="o">=</span>var.fence_snapshot
+<span class="w">  </span><span class="nv">peregrine_snapshot</span><span class="o">=</span>var.peregrine_snapshot
+<span class="w">  </span><span class="nv">sheepdog_snapshot</span><span class="o">=</span>var.sheepdog_snapshot
+<span class="w">  </span><span class="nv">indexd_snapshot</span><span class="o">=</span>var.indexd_snapshot
+<span class="w">  </span><span class="nv">fence_db_instance</span><span class="o">=</span>var.fence_db_instance
+<span class="w">  </span><span class="nv">sheepdog_db_instance</span><span class="o">=</span>var.sheepdog_db_instance
+<span class="w">  </span><span class="nv">indexd_db_instance</span><span class="o">=</span>var.indexd_db_instance
+<span class="w">  </span><span class="nv">hostname</span><span class="o">=</span>var.hostname
+<span class="w">  </span><span class="nv">kube_ssh_key</span><span class="o">=</span>var.kube_ssh_key
+<span class="w">  </span><span class="nv">kube_additional_keys</span><span class="o">=</span>var.kube_additional_keys
+<span class="w">  </span><span class="nv">hmac_encryption_key</span><span class="o">=</span>var.hmac_encryption_key
+<span class="w">  </span><span class="nv">sheepdog_secret_key</span><span class="o">=</span>var.sheepdog_secret_key
+<span class="w">  </span><span class="nv">sheepdog_indexd_password</span><span class="o">=</span>var.sheepdog_indexd_password
+<span class="w">  </span><span class="nv">sheepdog_oauth2_client_id</span><span class="o">=</span>var.sheepdog_oauth2_client_id
+<span class="w">  </span><span class="nv">config_folder</span><span class="o">=</span>var.config_folder
+<span class="w">  </span><span class="nv">sheepdog_oauth2_client_secret</span><span class="o">=</span>var.sheepdog_oauth2_client_secret
+<span class="w">  </span><span class="nv">ami_account_id</span><span class="o">=</span>var.ami_account_id
+<span class="w">  </span><span class="nv">squid_image_search_criteria</span><span class="o">=</span>var.squid_image_search_criteria
+<span class="w">  </span><span class="nv">peering_vpc_id</span><span class="o">=</span>var.peering_vpc_id
+<span class="w">  </span>squid-nlb-endpointservice-name<span class="o">=</span>var.squid-nlb-endpointservice-name
+<span class="w">  </span><span class="nv">slack_webhook</span><span class="o">=</span>var.slack_webhook
+<span class="w">  </span><span class="nv">secondary_slack_webhook</span><span class="o">=</span>var.secondary_slack_webhook
+<span class="w">  </span><span class="nv">alarm_threshold</span><span class="o">=</span>var.alarm_threshold
+<span class="w">  </span><span class="nv">csoc_managed</span><span class="o">=</span>var.csoc_managed
+<span class="w">  </span><span class="nv">csoc_peering</span><span class="o">=</span>var.csoc_peering
+<span class="w">  </span><span class="nv">mailgun_api_key</span><span class="o">=</span>var.mailgun_api_key
+<span class="w">  </span><span class="nv">mailgun_smtp_host</span><span class="o">=</span>var.mailgun_smtp_host
+<span class="w">  </span><span class="nv">mailgun_api_url</span><span class="o">=</span>var.mailgun_api_url
+<span class="w">  </span><span class="nv">fence_ha</span><span class="o">=</span>var.fence_ha
+<span class="w">  </span><span class="nv">sheepdog_ha</span><span class="o">=</span>var.sheepdog_ha
+<span class="w">  </span><span class="nv">indexd_ha</span><span class="o">=</span>var.indexd_ha
+<span class="w">  </span><span class="nv">fence_maintenance_window</span><span class="o">=</span>var.fence_maintenance_window
+<span class="w">  </span><span class="nv">sheepdog_maintenance_window</span><span class="o">=</span>var.sheepdog_maintenance_window
+<span class="w">  </span><span class="nv">indexd_maintenance_window</span><span class="o">=</span>var.indexd_maintenance_window
+<span class="w">  </span><span class="nv">fence_backup_retention_period</span><span class="o">=</span>var.fence_backup_retention_period
+<span class="w">  </span><span class="nv">sheepdog_backup_retention_period</span><span class="o">=</span>var.sheepdog_backup_retention_period
+<span class="w">  </span><span class="nv">indexd_backup_retention_period</span><span class="o">=</span>var.indexd_backup_retention_period
+<span class="w">  </span><span class="nv">fence_backup_window</span><span class="o">=</span>var.fence_backup_window
+<span class="w">  </span><span class="nv">sheepdog_backup_window</span><span class="o">=</span>var.sheepdog_backup_window
+<span class="w">  </span><span class="nv">indexd_backup_window</span><span class="o">=</span>var.indexd_backup_window
+<span class="w">  </span><span class="nv">engine_version</span><span class="o">=</span>var.engine_version
+<span class="w">  </span><span class="nv">fence_auto_minor_version_upgrade</span><span class="o">=</span>var.fence_auto_minor_version_upgrade
+<span class="w">  </span><span class="nv">indexd_auto_minor_version_upgrade</span><span class="o">=</span>var.indexd_auto_minor_version_upgrade
+<span class="w">  </span><span class="nv">sheepdog_auto_minor_version_upgrade</span><span class="o">=</span>var.sheepdog_auto_minor_version_upgrade
+<span class="w">  </span><span class="nv">users_bucket_name</span><span class="o">=</span>var.users_bucket_name
+<span class="w">  </span><span class="nv">fence_database_name</span><span class="o">=</span>var.fence_database_name
+<span class="w">  </span><span class="nv">sheepdog_database_name</span><span class="o">=</span>var.sheepdog_database_name
+<span class="w">  </span><span class="nv">indexd_database_name</span><span class="o">=</span>var.indexd_database_name
+<span class="w">  </span><span class="nv">fence_db_username</span><span class="o">=</span>var.fence_db_username
+<span class="w">  </span><span class="nv">sheepdog_db_username</span><span class="o">=</span>var.sheepdog_db_username
+<span class="w">  </span><span class="nv">indexd_db_username</span><span class="o">=</span>var.indexd_db_username
+<span class="w">  </span><span class="nv">fence_allow_major_version_upgrade</span><span class="o">=</span>var.fence_allow_major_version_upgrade
+<span class="w">  </span><span class="nv">sheepdog_allow_major_version_upgrade</span><span class="o">=</span>var.sheepdog_allow_major_version_upgrade
+<span class="w">  </span><span class="nv">indexd_allow_major_version_upgrade</span><span class="o">=</span>var.indexd_allow_major_version_upgrade
+<span class="w">  </span>ha-squid_instance_type<span class="o">=</span>var.ha-squid_instance_type
+<span class="w">  </span>ha-squid_instance_drive_size<span class="o">=</span>var.ha-squid_instance_drive_size
+<span class="w">  </span><span class="nv">deploy_single_proxy</span><span class="o">=</span>var.deploy_single_proxy
+<span class="w">  </span>ha-squid_bootstrap_script<span class="o">=</span>var.ha-squid_bootstrap_script
+<span class="w">  </span>ha-squid_extra_vars<span class="o">=</span>var.ha-squid_extra_vars
+<span class="w">  </span><span class="nv">branch</span><span class="o">=</span>var.branch
+<span class="w">  </span>fence-bot_bucket_access_arns<span class="o">=</span>var.fence-bot_bucket_access_arns
+<span class="w">  </span><span class="nv">deploy_ha_squid</span><span class="o">=</span>var.deploy_ha_squid
+<span class="w">  </span>ha-squid_cluster_desired_capasity<span class="o">=</span>var.ha-squid_cluster_desired_capasity
+<span class="w">  </span>ha-squid_cluster_min_size<span class="o">=</span>var.ha-squid_cluster_min_size
+<span class="w">  </span>ha-squid_cluster_max_size<span class="o">=</span>var.ha-squid_cluster_max_size
+<span class="w">  </span><span class="nv">deploy_sheepdog_db</span><span class="o">=</span>var.deploy_sheepdog_db
+<span class="w">  </span><span class="nv">deploy_fence_db</span><span class="o">=</span>var.deploy_fence_db
+<span class="w">  </span><span class="nv">deploy_indexd_db</span><span class="o">=</span>var.deploy_indexd_db
+<span class="w">  </span><span class="nv">single_squid_instance_type</span><span class="o">=</span>var.single_squid_instance_type
+<span class="w">  </span><span class="nv">network_expansion</span><span class="o">=</span>var.network_expansion
+<span class="w">  </span><span class="nv">rds_instance_storage_encrypted</span><span class="o">=</span>var.rds_instance_storage_encrypted
+<span class="w">  </span><span class="nv">fence_max_allocated_storage</span><span class="o">=</span>var.fence_max_allocated_storage
+<span class="w">  </span><span class="nv">sheepdog_max_allocated_storage</span><span class="o">=</span>var.sheepdog_max_allocated_storage
+<span class="w">  </span><span class="nv">indexd_max_allocated_storage</span><span class="o">=</span>var.indexd_max_allocated_storage
+<span class="w">  </span><span class="nv">activation_id</span><span class="o">=</span>var.activation_id
+<span class="w">  </span><span class="nv">customer_id</span><span class="o">=</span>var.customer_id
+<span class="w">  </span><span class="nv">fips</span><span class="o">=</span>var.fips
+<span class="w">  </span><span class="nv">ignore_fence_changes</span><span class="o">=</span>var.ignore_fence_changes
+<span class="w">  </span><span class="nv">ignore_sheepdog_changes</span><span class="o">=</span>var.ignore_sheepdog_changes
+<span class="w">  </span><span class="nv">ignore_indexd_changes</span><span class="o">=</span>var.ignore_indexd_changes
+<span class="w">  </span><span class="nv">prevent_fence_destroy</span><span class="o">=</span>var.prevent_fence_destroy
+<span class="w">  </span><span class="nv">prevent_sheepdog_destroy</span><span class="o">=</span>var.prevent_sheepdog_destroy
+<span class="w">  </span><span class="nv">prevent_indexd_destroy</span><span class="o">=</span>var.prevent_indexd_destroy
+<span class="w">  </span><span class="nv">deploy_alarms</span><span class="o">=</span>var.deploy_alarms
+<span class="w">  </span><span class="nv">ec2_keyname</span><span class="o">=</span>var.ec2_keyname
+<span class="w">  </span><span class="nv">instance_type</span><span class="o">=</span>var.instance_type
+<span class="w">  </span><span class="nv">jupyter_instance_type</span><span class="o">=</span>var.jupyter_instance_type
+<span class="w">  </span><span class="nv">workflow_instance_type</span><span class="o">=</span>var.workflow_instance_type
+<span class="w">  </span><span class="nv">secondary_cidr_block</span><span class="o">=</span>var.secondary_cidr_block
+<span class="w">  </span><span class="nv">users_policy</span><span class="o">=</span>var.users_policy
+<span class="w">  </span><span class="nv">worker_drive_size</span><span class="o">=</span>var.worker_drive_size
+<span class="w">  </span><span class="nv">eks_version</span><span class="o">=</span>var.eks_version
+<span class="w">  </span><span class="nv">workers_subnet_size</span><span class="o">=</span>var.workers_subnet_size
+<span class="w">  </span><span class="nv">bootstrap_script</span><span class="o">=</span>var.bootstrap_script
+<span class="w">  </span><span class="nv">jupyter_bootstrap_script</span><span class="o">=</span>var.jupyter_bootstrap_script
+<span class="w">  </span><span class="nv">kernel</span><span class="o">=</span>var.kernel
+<span class="w">  </span><span class="nv">jupyter_worker_drive_size</span><span class="o">=</span>var.jupyter_worker_drive_size
+<span class="w">  </span><span class="nv">workflow_bootstrap_script</span><span class="o">=</span>var.workflow_bootstrap_script
+<span class="w">  </span><span class="nv">workflow_worker_drive_size</span><span class="o">=</span>var.workflow_worker_drive_size
+<span class="w">  </span><span class="nv">cidrs_to_route_to_gw</span><span class="o">=</span>var.cidrs_to_route_to_gw
+<span class="w">  </span><span class="nv">organization_name</span><span class="o">=</span>var.organization_name
+<span class="w">  </span><span class="nv">jupyter_asg_desired_capacity</span><span class="o">=</span>var.jupyter_asg_desired_capacity
+<span class="w">  </span><span class="nv">jupyter_asg_max_size</span><span class="o">=</span>var.jupyter_asg_max_size
+<span class="w">  </span><span class="nv">jupyter_asg_min_size</span><span class="o">=</span>var.jupyter_asg_min_size
+<span class="w">  </span><span class="nv">workflow_asg_desired_capacity</span><span class="o">=</span>var.workflow_asg_desired_capacity
+<span class="w">  </span><span class="nv">workflow_asg_max_size</span><span class="o">=</span>var.workflow_asg_max_size
+<span class="w">  </span><span class="nv">workflow_asg_min_size</span><span class="o">=</span>var.workflow_asg_min_size
+<span class="w">  </span>iam-serviceaccount<span class="o">=</span>var.iam-serviceaccount
+<span class="w">  </span><span class="nv">domain_test</span><span class="o">=</span>var.domain_test
+<span class="w">  </span><span class="nv">deploy_workflow</span><span class="o">=</span>var.deploy_workflow
+<span class="w">  </span><span class="nv">secondary_availability_zones</span><span class="o">=</span>var.secondary_availability_zones
+<span class="w">  </span><span class="nv">deploy_jupyter</span><span class="o">=</span>var.deploy_jupyter
+<span class="w">  </span><span class="nv">dual_proxy</span><span class="o">=</span>var.dual_proxy
+<span class="w">  </span><span class="nv">single_az_for_jupyter</span><span class="o">=</span>var.single_az_for_jupyter
+<span class="w">  </span><span class="nv">oidc_eks_thumbprint</span><span class="o">=</span>var.oidc_eks_thumbprint
+<span class="w">  </span><span class="nv">sns_topic_arn</span><span class="o">=</span>var.sns_topic_arn
+<span class="w">  </span><span class="nv">fips_ami_kms</span><span class="o">=</span>var.fips_ami_kms
+<span class="w">  </span><span class="nv">fips_enabled_ami</span><span class="o">=</span>var.fips_enabled_ami
+<span class="w">  </span><span class="nv">availability_zones</span><span class="o">=</span>var.availability_zones
+<span class="w">  </span><span class="nv">deploy_eks</span><span class="o">=</span>var.deploy_eks
+<span class="w">  </span><span class="nv">deploy_es</span><span class="o">=</span>var.deploy_es
+<span class="w">  </span><span class="nv">ebs_volume_size_gb</span><span class="o">=</span>var.ebs_volume_size_gb
+<span class="w">  </span><span class="nv">encryption</span><span class="o">=</span>var.encryption
+<span class="w">  </span><span class="nv">es_instance_type</span><span class="o">=</span>var.es_instance_type
+<span class="w">  </span><span class="nv">es_instance_count</span><span class="o">=</span>var.es_instance_count
+<span class="w">  </span><span class="nv">es_version</span><span class="o">=</span>var.es_version
+<span class="w">  </span><span class="nv">es_linked_role</span><span class="o">=</span>var.es_linked_role
+<span class="w">  </span><span class="nv">cluster_identifier</span><span class="o">=</span>var.cluster_identifier
+<span class="w">  </span><span class="nv">cluster_instance_identifier</span><span class="o">=</span>var.cluster_instance_identifier
+<span class="w">  </span><span class="nv">cluster_instance_class</span><span class="o">=</span>var.cluster_instance_class
+<span class="w">  </span><span class="nv">cluster_engine</span><span class="o">=</span>var.cluster_engine
+<span class="w">  </span><span class="nv">cluster_engine_version</span><span class="o">=</span>var.cluster_engine_version
+<span class="w">  </span><span class="nv">master_username</span><span class="o">=</span>var.master_username
+<span class="w">  </span><span class="nv">storage_encrypted</span><span class="o">=</span>var.storage_encrypted
+<span class="w">  </span><span class="nv">apply_immediate</span><span class="o">=</span>var.apply_immediate
+<span class="w">  </span><span class="nv">engine_mode</span><span class="o">=</span>var.engine_mode
+<span class="w">  </span><span class="nv">serverlessv2_scaling_min_capacity</span><span class="o">=</span>var.serverlessv2_scaling_min_capacity
+<span class="w">  </span><span class="nv">serverlessv2_scaling_max_capacity</span><span class="o">=</span>var.serverlessv2_scaling_max_capacity
+<span class="w">  </span><span class="nv">skip_final_snapshot</span><span class="o">=</span>var.skip_final_snapshot
+<span class="w">  </span><span class="nv">final_snapshot_identifier</span><span class="o">=</span>var.final_snapshot_identifier
+<span class="w">  </span><span class="nv">backup_retention_period</span><span class="o">=</span>var.backup_retention_period
+<span class="w">  </span><span class="nv">preferred_backup_window</span><span class="o">=</span>var.preferred_backup_window
+<span class="w">  </span><span class="nv">password_length</span><span class="o">=</span>var.password_length
+<span class="w">  </span><span class="nv">deploy_aurora</span><span class="o">=</span>var.deploy_aurora
+<span class="w">  </span><span class="nv">deploy_rds</span><span class="o">=</span>var.deploy_rds
+<span class="w">  </span><span class="nv">use_asg</span><span class="o">=</span>var.use_asg
+<span class="w">  </span><span class="nv">use_karpenter</span><span class="o">=</span>var.use_karpenter
+<span class="w">  </span><span class="nv">karpenter_version</span><span class="o">=</span>var.karpenter_version
+<span class="w">  </span><span class="nv">deploy_cloud_trail</span><span class="o">=</span>var.deploy_cloud_trail
+<span class="w">  </span><span class="nv">send_logs_to_csoc</span><span class="o">=</span>var.send_logs_to_csoc
+<span class="w">  </span><span class="nv">route_table_name</span><span class="o">=</span>var.route_table_name
+<span class="w">  </span><span class="nv">eks_public_access</span><span class="o">=</span>var.eks_public_access
+<span class="w">  </span><span class="nv">deploy_gen3</span><span class="o">=</span>var.deploy_gen3
+<span class="w">  </span><span class="nv">ambassador_enabled</span><span class="o">=</span>var.ambassador_enabled
+<span class="w">  </span><span class="nv">arborist_enabled</span><span class="o">=</span>var.arborist_enabled
+<span class="w">  </span><span class="nv">argo_enabled</span><span class="o">=</span>var.argo_enabled
+<span class="w">  </span><span class="nv">audit_enabled</span><span class="o">=</span>var.audit_enabled
+<span class="w">  </span>aws-es-proxy_enabled<span class="o">=</span>var.aws-es-proxy_enabled
+<span class="w">  </span><span class="nv">dbgap_enabled</span><span class="o">=</span>var.dbgap_enabled
+<span class="w">  </span><span class="nv">dd_enabled</span><span class="o">=</span>var.dd_enabled
+<span class="w">  </span><span class="nv">dictionary_url</span><span class="o">=</span>var.dictionary_url
+<span class="w">  </span><span class="nv">dispatcher_job_number</span><span class="o">=</span>var.dispatcher_job_number
+<span class="w">  </span><span class="nv">fence_enabled</span><span class="o">=</span>var.fence_enabled
+<span class="w">  </span><span class="nv">guppy_enabled</span><span class="o">=</span>var.guppy_enabled
+<span class="w">  </span><span class="nv">hatchery_enabled</span><span class="o">=</span>var.hatchery_enabled
+<span class="w">  </span><span class="nv">indexd_enabled</span><span class="o">=</span>var.indexd_enabled
+<span class="w">  </span><span class="nv">indexd_prefix</span><span class="o">=</span>var.indexd_prefix
+<span class="w">  </span><span class="nv">ingress_enabled</span><span class="o">=</span>var.ingress_enabled
+<span class="w">  </span><span class="nv">manifestservice_enabled</span><span class="o">=</span>var.manifestservice_enabled
+<span class="w">  </span><span class="nv">metadata_enabled</span><span class="o">=</span>var.metadata_enabled
+<span class="w">  </span><span class="nv">netpolicy_enabled</span><span class="o">=</span>var.netpolicy_enabled
+<span class="w">  </span><span class="nv">peregrine_enabled</span><span class="o">=</span>var.peregrine_enabled
+<span class="w">  </span><span class="nv">pidgin_enabled</span><span class="o">=</span>var.pidgin_enabled
+<span class="w">  </span><span class="nv">portal_enabled</span><span class="o">=</span>var.portal_enabled
+<span class="w">  </span><span class="nv">public_datasets</span><span class="o">=</span>var.public_datasets
+<span class="w">  </span><span class="nv">requestor_enabled</span><span class="o">=</span>var.requestor_enabled
+<span class="w">  </span><span class="nv">revproxy_arn</span><span class="o">=</span>var.revproxy_arn
+<span class="w">  </span><span class="nv">revproxy_enabled</span><span class="o">=</span>var.revproxy_enabled
+<span class="w">  </span><span class="nv">sheepdog_enabled</span><span class="o">=</span>var.sheepdog_enabled
+<span class="w">  </span><span class="nv">slack_send_dbgap</span><span class="o">=</span>var.slack_send_dbgap
+<span class="w">  </span><span class="nv">ssjdispatcher_enabled</span><span class="o">=</span>var.ssjdispatcher_enabled
+<span class="w">  </span><span class="nv">tier_access_level</span><span class="o">=</span>var.tier_access_level
+<span class="w">  </span><span class="nv">tier_access_limit</span><span class="o">=</span>var.tier_access_limit
+<span class="w">  </span><span class="nv">usersync_enabled</span><span class="o">=</span>var.usersync_enabled
+<span class="w">  </span><span class="nv">usersync_schedule</span><span class="o">=</span>var.usersync_schedule
+<span class="w">  </span><span class="nv">useryaml_s3_path</span><span class="o">=</span>var.useryaml_s3_path
+<span class="w">  </span><span class="nv">wts_enabled</span><span class="o">=</span>var.wts_enabled
+<span class="w">  </span><span class="nv">fence_config_path</span><span class="o">=</span>var.fence_config_path
+<span class="w">  </span><span class="nv">useryaml_path</span><span class="o">=</span>var.useryaml_path
+<span class="w">  </span><span class="nv">gitops_path</span><span class="o">=</span>var.gitops_path
+<span class="w">  </span><span class="nv">google_client_id</span><span class="o">=</span>var.google_client_id
+<span class="w">  </span><span class="nv">google_client_secret</span><span class="o">=</span>var.google_client_secret
+<span class="w">  </span><span class="nv">fence_access_key</span><span class="o">=</span>var.fence_access_key
+<span class="w">  </span><span class="nv">fence_secret_key</span><span class="o">=</span>var.fence_secret_key
+<span class="w">  </span><span class="nv">upload_bucket</span><span class="o">=</span>var.upload_bucket
+<span class="w">  </span><span class="nv">namespace</span><span class="o">=</span>var.namespace
+<span class="w">  </span><span class="nv">secrets_manager_enabled</span><span class="o">=</span>var.secrets_manager_enabled
+<span class="w">  </span><span class="nv">ci_run</span><span class="o">=</span>var.ci_run
+<span class="o">}</span>
+</code></pre></div>
+<p>Next you'll need to define the variables you just passed into our module, since this is technically a new terraform module. So you'll need to make a variables.tf file that should be an exact clone of the variables.tf file of our variables.tf file. If you are adding this to an existing module then you can just append our variables to your current file.</p>
+<p>Once that is all setup you can proceed to running terraform.</p>
+<h4 id="running-terraform_1">Running terraform<a class="headerlink" href="#running-terraform_1" title="Permanent link">¶</a></h4>
+<p>Terraform will run in 2 parts, an initial plan and then an apply. This allows you to see the changes to your infrastructure to prevent unwanted changes that may affect the uptime of your application. Initially it should show only additions, but as you perform maintenance you will likely want to look at the plan more closely to ensure important resources are not deleted or modified.</p>
+<p>To create a terraform plan, you can run the following.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars
+</code></pre></div>
+<p>Terraform should automatically pull in all the configuration from any files with a .tf extension in the current directory, as well as all references to the modules referenced in those files. The -var-file flag says to use the variables within the config.tfvars as variables within the module. After running this you should see a plan with a few hundred resources being added to your account.</p>
+<p>The next step is to apply these changes if you're happy with them. To do that you can run a similar command, but change plan to apply.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars
+</code></pre></div>
+<p>It will ask you if you want to commit these changes and if you approve them then terraform will run for a while and create the resources.</p>
+<h4 id="note_1">Note<a class="headerlink" href="#note_1" title="Permanent link">¶</a></h4>
+<p>Terraform may time out creating resources or run into errors. If it does, it can be normal due to long provisioning processes and race conditions. If you see errors run apply a couple more times and if the errors persist, reach out over our community slack channel for assistance.</p>
+<h3 id="maintenance_1">Maintenance<a class="headerlink" href="#maintenance_1" title="Permanent link">¶</a></h3>
+<h4 id="changing-infrastructure_1">Changing Infrastructure<a class="headerlink" href="#changing-infrastructure_1" title="Permanent link">¶</a></h4>
+<p>The steps for performing maintenance are similar to deployment. You will need to access the cloned repo and go to the directory where you ran terraform. This will contain all the configuration you setup as well as a reference to your state file. If you don't have this, you can always recreate it from scratch and as long as your state file still exists in the S3 bucket you configured, everything will work as normal.</p>
+<p>Once you are in the properly prepped repo, you can make a change to the config.tfvars file, for example changing eks_version from 1.24 to 1.25 to ugrade EKS. After you make that change run a plan, although this time you will want to check the plan more carefully to make sure only the change you intend to make is happening, and run an apply.</p>
+<h4 id="destroying-your-infrastructure_1">Destroying Your Infrastructure<a class="headerlink" href="#destroying-your-infrastructure_1" title="Permanent link">¶</a></h4>
+<p>To destroy your infrastructure you can run the exact same commands as the plan and apply, only you will add a --destroy flag to the end.</p>
+<div class="highlight"><span class="filename">Bash</span><pre><span></span><code>terraform<span class="w"> </span>plan<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars<span class="w"> </span>--destroy
+terraform<span class="w"> </span>apply<span class="w"> </span>-var-file<span class="w"> </span>config.tfvars<span class="w"> </span>--destroy
+</code></pre></div>
+<p>This will let you see everything that will be destroyed and once you apply the change the destruction will commence.</p>
+<!-- overview -->
+<!-- Running Terraform from Gen3-Terraform -->
+<!-- Running Terraform as a Module --></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2024 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    
+      
+      <nav
+        class="md-footer__inner md-grid"
+        aria-label="Footer"
+        
+      >
+
+        <!-- Link to previous page -->
+        
+          
+          <a
+            href="../iac-overview/"
+            class="md-footer__link md-footer__link--prev"
+            aria-label="Previous: Infrastructure as Code - Overview"
+          >
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Infrastructure as Code - Overview
+              </div>
+            </div>
+          </a>
+        
+
+        <!-- Link to next page -->
+        
+          
+          <a
+            href="../iac-terragrunt/"
+            class="md-footer__link md-footer__link--next"
+            aria-label="Next: Terragrunt"
+          >
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Terragrunt
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+
+      <!-- Custom link to Center for Translational Data Science -->
+      <div class="md-footer__link" style="vertical-align: middle; padding-bottom: 10px;">
+        <a href="https://ctds.uchicago.edu/" target="_blank" rel="noopener noreferrer">
+          Center for Translational Data Science
+        </a>
+      </div>
+      <!-- End of custom link -->
+
+      <!-- Social links -->
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/center-for-translational-data-science/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform" target="_blank" rel="noopener" title="docs.google.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1s21.16-47.06 47.06-47.06h47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06S448 171 448 196.9s-21.16 47.06-47.06 47.06h-47.06zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06S309 480 283.1 480s-47.06-21.16-47.06-47.06v-47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06s21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/channel/UCMCwQy4EDd1BaskzZgIOsNQ/featured" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/uc-cdis" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://bsky.app/profile/ctds-uchicago.bsky.social" target="_blank" rel="noopener" title="bsky.app" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2 42.1-31.6 110.3-56 110.3 21.8 0 15.5-8.9 130.5-14.1 149.2-18.2 64.8-84.4 81.4-143.3 71.3C456 322 482.2 380 425.6 438c-107.4 110.2-154.3-27.6-166.3-62.9-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8c-12 35.3-59 173.1-166.3 62.9-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1 10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "navigation.indexes", "navigation.tracking", "navigation.path"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../../js/dd.js"></script>
+      
+    
+  </body>
+</html>
