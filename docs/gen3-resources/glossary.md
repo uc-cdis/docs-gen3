@@ -95,7 +95,7 @@ Gen3 workspaces are secure data analysis environments in the cloud that can acce
 [AggMDS]: operator-guide/customize-search.md#discovery-page
 [Data Portal User Guide]: user-guide/portal.md
 [Microservices]: developer-guide/key_repos.md
-[Gen3 client docs]: user-guide/access-data.md#installation-instructions
+[Gen3 client docs]: tools/data-client.md
 [SDK docs]: user-guide/search.md#the-gen3-sdk
 [PFB GitHub]: https://github.com/uc-cdis/pypfb
 [PFB Pub]: https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010944

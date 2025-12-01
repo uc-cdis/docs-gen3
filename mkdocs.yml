@@ -64,6 +64,10 @@ nav:
     - Gen3 Architecture:  gen3-resources/developer-guide/architecture.md
     - Key Repositories:  gen3-resources/developer-guide/key_repos.md
     - Contribute Code to Gen3: gen3-resources/developer-guide/contribute.md
+  - Tools:
+    - gen3-resources/tools/index.md
+    - Gen3 Data Client : gen3-resources/tools/data-client.md
+    - Gen3 SDK: gen3-resources/tools/gen3-sdk.md
   - Blog:
     - blog/index.md
   - Frequently Asked Questions: gen3-resources/faq.md

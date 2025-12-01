@@ -181,7 +181,7 @@ All the functionality of the data commons data portal is available by sending re
 [Gen3 Data Hub Exploration]: https://gen3.datacommons.io/explorer
 [img Gen3 Toolbar Exploration]: img/Gen3_Toolbar_exploration.png
 [Gen3 client]: access-data.md#download-files-using-the-gen3-client
-[Gen3 bulk download]: access-data.md#multiple-file-download-with-manifest
+[Gen3 bulk download]: ../tools/data-client.md#multiple-file-download-with-manifest
 [img Explorer GIF]: img/explorer_gif_2020.gif
 [Gen3 Workspace]: analyze-data.md#launch-workspace
 

@@ -61,17 +61,10 @@ Users can submit queries to the Gen3 APIs to access structured data across the p
 Users with “read” access to a project can export entire structured metadata records by sending requests to the API. Single records can be exported or all records in a specific node of a project can be retrieved. For more information, see the [documentation on using the API][API documentation].
 
 #### The Gen3 SDK
+
 To make sending requests to the Gen3 APIs easier, the bioinformatics team at the Center for Translational Data Science (CTDS) at University of Chicago has put together a basic Python SDK (software development kit) to help users interact with the Gen3 APIs. It also exposes a Command Line Interface (CLI), which covers a lot of data ingestion support and doesn't require the user to write python.
 
-The SDK is essentially a collection of Python wrapper functions for sending requests to the API. It is open source and can be found on [Github][Gen3 SDK GitHub pg]. Thorough documentation for the SDK can be found in the GitHub repository [documentation page][SDK doc pg].
-
-##### Sending Queries using the SDK
-The [Gen3Submission class][Gen3Submission Python SDK class] of the Python SDK has functions for sending queries to the API and also for retrieving the graphQL schema of the data commons. Queries can be used to pinpoint specific data of interest by providing query arguments that act as filters on records in the database and providing lists of properties to retrieve for those records. If all the structured data in a record or node is desired, as opposed to only specific properties, then see the export functions below.
-
-##### Exporting Structured Data using the SDK
-Entire structured data records can be exported as a JSON or TSV file using the [Gen3Submission Python SDK class][Gen3Submission Python SDK class]. The `export_record` function will export a single structured metadata record in a specific node of a specific project, whereas the `export_node` function will export all the structured metadata records in a specified node of a specific project.
-
-More SDK examples and how to get started with the SDK can be also found in the [analyze-data section][Using Gen3 SDK].
+You can find instructions and some examples [here][Gen3 Python SDK doc].
 
 
 #### Query Page
@@ -297,16 +290,13 @@ A graphical model of the structured data of a data commons can be browsed by nav
 [Gen3 Data Hub]: https://gen3.datacommons.io/
 [API instructions]: search.md#use-the-api
 [Gen3 client]: access-data.md#download-files-using-the-gen3-client
-[Gen3 bulk download]: access-data.md#multiple-file-download-with-manifest
+[Gen3 bulk download]: ../tools/data-client.md#multiple-file-download-with-manifest
 [Gen3 Workspace]: analyze-data.md/#launch-workspace
 
 <!-- API section -->
 [Developer API specs]: ../developer-guide/key_repos.md
 [API documentation]: using-api.md
-[SDK doc pg]: https://uc-cdis.github.io/gen3sdk-python/_build/html/index.html
-[Gen3Submission Python SDK class]: https://uc-cdis.github.io/gen3sdk-python/_build/html/submission.html
-[Using Gen3 SDK]: analyze-data.md#using-the-gen3-python-sdk
-[Gen3 SDK GitHub pg]: https://github.com/uc-cdis/gen3sdk-python
+[Gen3 Python SDK doc]: ../tools/gen3-sdk.md
 [Guppy]: https://github.com/uc-cdis/guppy
 [Guppy download endpoint]: https://github.com/uc-cdis/guppy/blob/master/doc/download.md
 
