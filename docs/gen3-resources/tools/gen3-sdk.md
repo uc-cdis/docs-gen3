@@ -43,7 +43,7 @@ git pull origin master
 
 ### Gen3 Auth class  
 
-Most requests sent to a Gen3 data commons API will require an authorization token to be sent in the request’s header. The SDK class *Gen3Auth* is used for authentication purposes, and generates these access tokens from the [credentials that can be downloaded from the commons Profile page](./user-guide/using-api/#credentials-to-send-api-requests). The code below expects that the credentials.json 
+Most requests sent to a Gen3 data commons API will require an authorization token to be sent in the request’s header. The SDK class *Gen3Auth* is used for authentication purposes, and generates these access tokens from the [credentials that can be downloaded from the commons Profile page](./user-guide/using-api/#credentials-to-send-api-requests). The code below expects that the credentials.json is in your Downloads folder; update if it's in a different directory.  
 
    When using the Gen3 SDK from the terminal, users do need to authenticate, but users working from the workspace do not need to authenticate after  logging in to the Data Commons.
 
