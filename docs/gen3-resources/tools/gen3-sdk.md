@@ -64,7 +64,7 @@ auth = Gen3Auth(endpoint, refresh_file=creds)
 
 The [Gen3Submission][Gen3Submission Python SDK class] class of the Gen3 SDK has functions for sending and retrieving structured data to the graph database service (Sheepdog) API. Users can refine their retrieval by using the graphQL schema of the data commons and graphQL queries. Queries can be used to pinpoint specific data of interest by providing query arguments that act as filters on records in the database and providing lists of properties to retrieve for those records. If all the structured data in a record or node is desired, as opposed to only specific properties, then see the export functions below.
 
-Entire structured data records can be exported as a JSON or TSV file using the Gen3Submission Gen3 SDK class. The export_record function will export a single structured metadata record in a specific node of a specific project, whereas the export_node function will export all the structured metadata records in a specified node of a specific project.
+Entire structured data records can be exported as a JSON or TSV file using the Gen3Submission Gen3 SDK class. The export_record function will export a single structured metadata record in a specific node of a specific project, whereas the export_node function will export all the structured metadata records in a specified node of a specific project.  
 
 #### `Gen3Submission.get_programs`  
 
@@ -92,7 +92,7 @@ will return “CCLE” as the project under the program “OpenAccess”: `{'lin
 
 #### `Gen3Submission.export_node`  
 
-All structured metadata stored under one node of a project can be exported as a tsv file with the function `export_node`. The following commands:
+All structured metadata stored under one node of a project in the graph Postgres database can be exported as a tsv file with the function `export_node`. The following commands:
 
 ```python
 from gen3.submission import Gen3Submission
@@ -105,6 +105,8 @@ filename = "OpenAccess_CCLE_aligned_reads_file.tsv"
 sub.export_node(program, project, node_type, fileformat, filename)
 ```
 will return: `Output written to file: OpenAccess_CCLE_aligned_reads_file.tsv`
+
+*A note to clarify that this will download the structured data (metadata) present in the graph database, and it does not download any data files that are referenced in this metadata.*  
 
 ### `Gen3Index`  
 
