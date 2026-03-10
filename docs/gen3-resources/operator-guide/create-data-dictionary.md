@@ -62,7 +62,7 @@ The following image depicts the graph view of the core data dictionary (The key 
 
 
 ## Modifying a Data Dictionary
-Once you have obtained the baseline dictionary, you can make updates to it in order to tailor it to your particular project. Some groups have created open-source tools for editing data dictionaries using other methods, such as [gen3schemadev][gen3schemadev], which interconverts YAML schemas with TSV format spreadsheets. This tool and others like it found on the [Gen3 Tools Page][Gen3 Tools] may be useful.
+Once you have obtained the baseline dictionary, you can make updates to it in order to tailor it to your particular project. Some groups have created open-source tools for editing data dictionaries using other methods, such as [gen3schemadev][gen3schemadev], which interconverts YAML schemas with TSV format spreadsheets. This tool and others like it found on the [Gen3 Tools Page][Gen3 Tools] may be useful. If you are changing the location of your data dictionary file, or have not installed it yet, refer to the [helm configuration documentation](helm/helm-config/index.md) for information on how to specify the path or link to the data dictionary.
 
 > Note: The Gen3 dictionary is stored in JSON format following the [jsonschema](https://cswr.github.io/JsonSchema/spec/basic_types/). The backend (Sheepdog) stores properties in the database as jsonb.
 
