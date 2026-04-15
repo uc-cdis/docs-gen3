@@ -38,7 +38,7 @@ nav:
         - Front End: gen3-resources/operator-guide/helm/helm-config/helm-config-frontend.md
         - Workspaces: gen3-resources/operator-guide/helm/helm-config/helm-config-workspaces.md
         - Revproxy: gen3-resources/operator-guide/helm/helm-config/helm-config-revproxy.md
-    - Post-Deployment:
+    - Data Submission and Search Configuration:
       - Create Data Dictionary: gen3-resources/operator-guide/create-data-dictionary.md
       # contains info about creating (and maintaining?) a data dictionary
       - Submit Data:
