@@ -1,0 +1,58 @@
+name: Daily API Update Check
+on:
+  workflow_dispatch:
+  schedule:
+    # 9:47AM central time M-F
+    # why so specific? probably a lot of people have things scheduled 
+    # on the half-hour so this avoids load times at 9:30 / 10
+    - cron: '47 9 * * 1-5'
+      timezone: "America/Chicago"
+permissions:
+  contents: write
+jobs:
+  api-update-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+
+      - name: Download OpenAPI spec
+        run: |
+          # TODO: use main branch once this is merged
+          curl -L https://raw.githubusercontent.com/uc-cdis/gen3-ai/refs/heads/feat/docs/docs/api.html -o ./docs/gen3-resources/user-guide/api/gen3_ai_api.html
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git add ./docs/gen3-resources/user-guide/api/gen3_ai_api.html
+          if git diff --cached --quiet; then
+            echo "changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request If Changes Detected
+        if: steps.check_changes.outputs.changes == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH_NAME="chore/update-api-docs-${{ github.run_id }}"
+
+          git checkout -b $BRANCH_NAME
+          git add ./docs/gen3-resources/user-guide/api/gen3_ai_api.html
+          git commit -m "docs(api): update gen3_ai_api.html from upstream"
+          git push origin $BRANCH_NAME
+
+          # gh CLI is pre-installed in ubuntu-latest
+          gh pr create \
+            --title "docs(api): update API documentation" \
+            --body "Automated update of APIs docs from upstream repositories." \
+            --head $BRANCH_NAME
