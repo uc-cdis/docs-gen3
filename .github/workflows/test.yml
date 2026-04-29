@@ -1,18 +1,13 @@
-name: Documentation
+name: Test Documentation
 on:
+  # push will run on every pushed commit to any branch
+  # EXCEPT to master and main, which the `publish.yml` handles
   push:
-    branches:
+    branches-ignore:
       - master
       - main
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/configure-pages@v6
@@ -20,7 +15,7 @@ jobs:
       - name: Configure Git Credentials
         run: |
           git config user.name github-actions[bot]
-          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git config user.email github-actions[bot]@users.noreply.github.com
       - name: Add CNAME file
         run: echo 'docs.gen3.org' > ./docs/CNAME
       - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
@@ -29,8 +24,3 @@ jobs:
           python-version: 3.x
       - run: pip install zensical
       - run: zensical build --clean
-      - uses: actions/upload-pages-artifact@v5
-        with:
-          path: site
-      - uses: actions/deploy-pages@v5
-        id: deployment
