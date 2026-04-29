@@ -1,5 +1,7 @@
 # Using the API
 
+> We're working on getting official API documentation auto-generated from our backend and published here. Our first batch is a pre-alpha, proposed API for some of the [Gen3 AI support](./api/gen3_ai_api.html) we're building.
+
 ## What does the API do?
 
 The application programming interface (API) can be a set of code, rules, functions, and URLs that allow apps, software, servers or more generally speaking, systems, to communicate with each other. The communication between APIs consists of requests and (data) responses, usually in .JSON format.
@@ -8,8 +10,6 @@ The beauty of a Gen3 data commons is that all the functionality of the data comm
 
 >
 Note: The Gen3 commons uses GraphQL as the language for querying metadata across Gen3 Data Commons. To learn the basics of writing queries in GraphQL, please visit: [http://graphql.org/learn][learn GraphQL]. You can also try out creating and executing GraphQL queries in the [Data Portal Query Page][Query_page_instructions].
-
-
 
 Gen3 features a variety of API endpoints such as `/submission`, `/index`, or `/graphql`, which differ in how they access the resource and contain each a subset of REST (Representational State Transfer) APIs for networked applications. REST APIs are restricted in their interactions via HTTP request methods such as GET, POST, PATCH, PUT, or DELETE. The GET request retrieves data in read-only mode, POST typically sends data and creates a new resource, PATCH typically updates/modifies a resource, PUT typically updates/replaces a resource, and DELETE deletes a resource. At Gen3, the GET endpoint
 ```
