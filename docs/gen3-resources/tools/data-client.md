@@ -482,7 +482,6 @@ If this happens (and you are still authorized to access the data), you can downl
 
 <!--Gen3 client download -->
 [Gen3 Client]: https://github.com/uc-cdis/cdis-data-client/releases/latest
-[sdk_github]: https://github.com/uc-cdis/gen3sdk-python
 [PATH]: data-client.md#working-from-the-command-line
 [img create API key]: img/Gen3_Keys.png
 

@@ -101,8 +101,16 @@ To view the MDS for the Gen3 Data Hub you can go [here][gen3 data hub mds]. You 
         },
 ```
 
-Instructions for working with the API are found [here][mds api].
+<!-- [] -->
 
+
+
+
+
+
+
+
+Instructions for working with the API are found [in the swagger docs][mdsapi].
 
 
 ### Aggregated Metadata Service
@@ -191,7 +199,7 @@ Setting up a functioning mesh where you can access files from individual commons
 [aggmds github]: https://github.com/uc-cdis/metadata-service/blob/master/docs/config_agg_mds.md
 [sdk for discovery page]: https://github.com/uc-cdis/gen3sdk-python/blob/master/gen3/cli/discovery.py
 [gen3 data hub mds]: https://gen3.datacommons.io/mds/metadata?data=True&_guid_type=discovery_metadata
-[mds api]: https://petstore.swagger.io/?url=https://raw.githubusercontent.com/uc-cdis/metadata-service/master/docs/openapi.yaml
+[mdsapi]: https://petstore.swagger.io/?url=https://raw.githubusercontent.com/uc-cdis/metadata-service/master/docs/openapi.yaml
 [aggmds sync]: https://github.com/uc-cdis/cloud-automation/blob/master/kube/services/jobs/metadata-aggregate-sync-job.yaml
 [BRH]: https://brh.data-commons.org/
 [BRH aggregated_config.json]: https://github.com/uc-cdis/cdis-manifest/blob/master/brh.data-commons.org/metadata/aggregate_config.json
