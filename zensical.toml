@@ -34,7 +34,7 @@ site_url = "https://docs.gen3.org/"
 #
 # Read more: https://zensical.org/docs/setup/basics/#copyright
 copyright = """
-Copyright &copy; 2026 Center for Translational Data Science 
+Copyright &copy; 2026 Center for Translational Data Science
 """
 
 # Zensical supports both implicit navigation and explicitly defined navigation.
@@ -292,7 +292,7 @@ features = [
     # When sections are enabled, top-level sections are rendered as groups in
     # the sidebar for viewports above 1220px, but remain as-is on mobile.
     # https://zensical.org/docs/setup/navigation/#navigation-sections
-    "navigation.sections",
+  #  "navigation.sections",
 
     # When tabs are enabled, top-level sections are rendered in a menu layer
     # below the header for viewports above 1220px, but remain as-is on mobile.
@@ -372,7 +372,7 @@ logo = "img/gen3_new_logo_white.svg"
 # [[project.theme.palette]]
 # primary = "black"
 
-[[project.theme.palette]] 
+[[project.theme.palette]]
 primary = "black"
 scheme = "default"
 toggle.icon = "lucide/sun"
