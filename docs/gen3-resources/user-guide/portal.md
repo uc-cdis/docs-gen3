@@ -31,7 +31,7 @@ Each of these main tabs will have filters on the left-hand side, which can be us
 
 > Note: The main tabs in the Exploration Page, the available filters, and the properties listed in the data table are entirely customizable and will be different for various Gen3 data commons.
 
-If the table is a list of files, there should be a button for downloading a JSON file that serves as a manifest to use with the [gen3-client][Gen3 client] for [downloading multiple files][Gen3 bulk download]. Otherwise, to download single a file listed in the table, simply click on the GUID (globally unique identifier, or object_id), which should open a page with a download button.
+If the table is a list of files, there should be a button for downloading a JSON file that serves as a manifest to use with the [gen3-client][Gen3 Client] for [downloading multiple files][Gen3 bulk download]. Otherwise, to download single a file listed in the table, simply click on the GUID (globally unique identifier, or object_id), which should open a page with a download button.
 
 ![GIF showing how to use the Gen3 Explorer][img Explorer GIF]
 
@@ -171,7 +171,6 @@ All the functionality of the data commons data portal is available by sending re
 [Gen3 Data Hub]: https://gen3.datacommons.io/
 
 <!-- Profile -->
-[Download Data Files into a Workspace with the Python SDK]: img/profile_page.png
 [img profile]: img/profile_page.png
 [Gen3 Client]: access-data.md#download-files-using-the-gen3-client
 
@@ -180,7 +179,6 @@ All the functionality of the data commons data portal is available by sending re
 <!-- Exploration section. -->
 [Gen3 Data Hub Exploration]: https://gen3.datacommons.io/explorer
 [img Gen3 Toolbar Exploration]: img/Gen3_Toolbar_exploration.png
-[Gen3 client]: access-data.md#download-files-using-the-gen3-client
 [Gen3 bulk download]: ../tools/data-client.md#multiple-file-download-with-manifest
 [img Explorer GIF]: img/explorer_gif_2020.gif
 [Gen3 Workspace]: analyze-data.md#launch-workspace

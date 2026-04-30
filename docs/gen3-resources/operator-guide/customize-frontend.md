@@ -1,4 +1,4 @@
-# Customize appearance of the front end
+f# Customize appearance of the front end
 
 Below we show a few examples of how to customize the Gen3 Data Portal.
 
@@ -62,8 +62,8 @@ The "tooltip" shows text upon hovering over the icon.
 
 ![navigationbar][navigationbar image]
 
-* [Review the code to edit icon, link, color, tooltip, and name of the navigation items][gitops.json navbar].
-* Adding a new icon requires saving the icon in [this repository][icons] and [in this file][icons inex].
+* [Review the code to edit icon, link, color, tooltip, and name of the navigation items](https://github.com/uc-cdis/cdis-manifest/blob/551f0963e60f6000ae8b9987592495406a031c81/gen3.datacommons.io/portal/gitops.json#L84-L134).
+* Adding a new icon requires saving the icon in [this repository][icons] and [in this file][icons index].
 
 ## Data Commons or Mesh Title
 
