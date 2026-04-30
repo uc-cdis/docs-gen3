@@ -4,6 +4,8 @@ Gen3 is a data platform for building data commons and data meshes. The Gen3 plat
 
 You can find more information about Gen3 on [gen3.org](https://gen3.org/).
 
+You can find the source code for Gen3 on [GitHub][gen3 github].
+
 ## Powered by Gen3
 
 Gen3 is used by dozen of projects around the world to manage and analyze biomedical data.  You can find an incomplete list of current Gen3 projects [here](https://gen3.org/powered-by-gen3/).
@@ -30,11 +32,4 @@ To reach a member of the CTDS User Services Team you may contact us via email at
 
 
 
-[code of conduct]: https://forums.gen3.org/t/faq-guidelines/5
-[contact page]: ../contact.md
-[gen3 youtube]: https://www.youtube.com/channel/UCMCwQy4EDd1BaskzZgIOsNQ/featured
 [gen3 github]: https://github.com/uc-cdis
-[gen3 publications]: https://gen3.org/gen3refs/
-[community page]: https://gen3.org/community/events/
-[release notes]: https://github.com/uc-cdis/cdis-manifest/tree/master/releases
-[contributor guidelines]: developer-guide/contribute.md
