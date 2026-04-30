@@ -101,8 +101,16 @@ To view the MDS for the Gen3 Data Hub you can go [here][gen3 data hub mds]. You 
         },
 ```
 
-Instructions for working with the API are found [here][mds api].
 
+<!-- [] -->
+
+
+
+
+
+
+
+Instructions for working with the API are found [in the swagger docs][mds api].
 
 
 ### Aggregated Metadata Service

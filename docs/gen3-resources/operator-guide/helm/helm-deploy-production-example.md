@@ -265,7 +265,6 @@ spec:
 
 
 <!-- Reference Links -->
-[argo wrapper]: https://github.com/uc-cdis/argo-wrapper
 [aws cli user guide]: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 [terraform user guide]: https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli
 [kubectl]: https://kubernetes.io/docs/tasks/tools/

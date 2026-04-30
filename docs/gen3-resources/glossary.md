@@ -11,7 +11,7 @@ A Common Services Operations Center is an operations center operated by a common
 ## Crosswalk
 Typically, used for linking patients from across data commons where some patient data exists in commons A and additional data exists in commons B. This linkage enables metadata associations across commons and the promise of richer datasets.  Crosswalks can be made for several types of metadata and are recorded in the metadata service. An example of how to set this up is found [here][crosswalk setup].
 ## Data Commons
-A data commons co-locates data with cloud computing infrastructure and commonly used software services, tools, and applications for managing, integrating, analyzing and sharing data that are exposed through web portals and APIs to create an interoperable resource for a research community. A data commons provides services so that the data is findable, accessible, interoperable and reusable (FAIR)
+A data commons co-locates data with cloud computing infrastructure and commonly used software services, tools, and applications for managing, integrating, analyzing and sharing data that are exposed through web portals and APIs to create an interoperable resource for a research community. A data commons provides services so that the data is findable, accessible, interoperable and reusable (FAIR).
 ## Data Dictionary
 Every Gen3 data commons employs a data model, which serves to describe, organize, and harmonize data sets submitted by different users. Data harmonization facilitates cross-project analyses and is thus one of the pillars of the data commons paradigm. The data model organizes experimental metadata variables, “properties”, into linked categories, “nodes”, through the use of a data dictionary. The data dictionary lists and describes all nodes in the data model, as well as defines and describes the properties in each node. A Gen3 Data Dictionary is specified by a YAML file per node. Additional details on Gen3 data dictionaries can be found [here][data dictionary overview].
 ## Data Hub
@@ -42,7 +42,7 @@ Edge nodes may be created at clinics, labs, hospitals, or academic institutions 
 ## ETL
 Structured data submitted to commons are stored in PostgreSQL. Querying data from PostgreSQL with multiple join is painful and inefficient. So, we use ElasticSearch as a place to store materialized dataset. Extract-transform-load (ETL) is a process that creates the materialized data from PostgreSQL and store them in ElasticSearch.  This is accomplished via the Tube microservice. More details of running an ETL can be found [here](operator-guide/customize-search.md#etl).
 ## FAIR Data
-FAIR data are data which are findable, accessible, interoperable, and reusable[12]. There is now an extensive literature on FAIR data.
+FAIR data are data which are findable, accessible, interoperable, and reusable. There is now an extensive literature on FAIR data.
 ## Framework Services
 Framework Services or Data Commons Framework (DCF) Services is the term used by Gen3 to refer to data mesh services in the narrow middle architecture, for data meshes, such as the NCI Cancer Research Data Commons. These are set of standards-based services with open APIs for authentication, authorization, creating and accessing FAIR data objects, and for working with bulk structured data in machine-readable, self-contained format.
 

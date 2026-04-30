@@ -317,10 +317,10 @@ The below is an example of a Indexing Manifest File:
 
 | guid | File_name | File_size | md5sum | bucket_urls | auth |
 | --- | --- | --- | --- | --- | --- |
-| dg.4503/02... ...7103bbe | examplefile.txt | 34141 | c79... ...dbd | s3://nih-phs001416-c1/exfile.txt gs://nih-phs001416-c1/exfile.txt | [phs001416.c1] |
-| dg.4503/00... ...0211dfg | otherexamplefile.txt | 562256 | 65a... ...bca | s3://nih-nhlbi-topmed-released-phs001416-c1/otherexamplefile.txt gs://nih-nhlbi-topmed-released-phs001416-c1/otherexamplefile.txt | [phs001416.c1] |
-| dg.4503/00... ...7103bbe | examplefile.txt | 36564 | dca... ...774 | s3://nih-nhlbi-topmed-released-phs001416-c2/examplefile.txt gs://nih-nhlbi-topmed-released-phs001416-c2/examplefile.txt | [phs001416.c2] |
-| dg.4503/01... ...0410nnd | otherexamplefile.txt | 2675 | 742... ...f1b | s3://nih-nhlbi-topmed-released-phs001416-c2/otherexamplefile.txt gs://nih-nhlbi-topmed-released-phs001416-c2/otherexamplefile.txt | [phs001416.c2] |
+| dg.4503/02... ...7103bbe | examplefile.txt | 34141 | c79... ...dbd | s3://nih-phs001416-c1/exfile.txt gs://nih-phs001416-c1/exfile.txt | \[phs001416.c1] |
+| dg.4503/00... ...0211dfg | otherexamplefile.txt | 562256 | 65a... ...bca | s3://nih-nhlbi-topmed-released-phs001416-c1/otherexamplefile.txt gs://nih-nhlbi-topmed-released-phs001416-c1/otherexamplefile.txt | \[phs001416.c1] |
+| dg.4503/00... ...7103bbe | examplefile.txt | 36564 | dca... ...774 | s3://nih-nhlbi-topmed-released-phs001416-c2/examplefile.txt gs://nih-nhlbi-topmed-released-phs001416-c2/examplefile.txt | \[phs001416.c2] |
+| dg.4503/01... ...0410nnd | otherexamplefile.txt | 2675 | 742... ...f1b | s3://nih-nhlbi-topmed-released-phs001416-c2/otherexamplefile.txt gs://nih-nhlbi-topmed-released-phs001416-c2/otherexamplefile.txt | \[phs001416.c2] |
 
 
 ### 6. Submit file Indexing Manifest to Indexd
