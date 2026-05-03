@@ -138,10 +138,18 @@ plugins:
   - tags
   - blog:
       enabled: true
+      draft: true # permit draft blog posts that aren't public
       authors: true
       authors_file: blog/authors.yml
+      authors_profiles: true
+      authors_profiles_name: Blog Contributors
       blog_dir: blog
       blog_toc: true
+      categories: true
+      categories_allowed:
+        - How does Gen3...
+        - For Gen3 Operators
+        - From CTDS
   - mkdocs-video:
       is_video: True
 
