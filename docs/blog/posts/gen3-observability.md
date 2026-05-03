@@ -5,8 +5,8 @@ authors:
  - elise
 date: 2024-10-15
 categories:
-  - Operator
-  - CTDS
+  - For Gen3 Operators
+  - From CTDS
 tags:
   - Observability
   - Helm Chart
