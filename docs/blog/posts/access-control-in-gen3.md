@@ -6,7 +6,7 @@ authors:
 date: 2026-05-04
 categories:
   - How does Gen3...
-  - CTDS
+  - From CTDS
 tags:
   - Intro to Gen3
   - Authz
