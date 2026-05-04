@@ -4,6 +4,7 @@ slug: access-control-in-gen3
 authors:
  - sara
 date: 2026-05-04
+draft: true
 categories:
   - How does Gen3...
   - From CTDS
