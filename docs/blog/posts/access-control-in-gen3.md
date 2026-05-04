@@ -4,6 +4,7 @@ slug: access-control-in-gen3
 authors:
  - sara
 date: 2026-05-04
+draft: true
 categories:
   - How does Gen3...
   - From CTDS
@@ -23,7 +24,7 @@ It starts at the **user.yaml**, where you create roles and resources, and combin
 Some examples of what can be controlled-access (just a few of many):  
 
 * Through the user.yaml and the frontend-framework authz.json config, you can lock down individual pages of the frontend so that users without permissions cannot even open them (and so cannot see any data on them).  
-* Through the user.yaml, Indexd authz, and the Guppy config, you can make all data from a project (files, graph metadata, non-file graph data, ETL-transformed graph data/metadata) restricted from view or download.  
+* Through the user.yaml, Indexd authz, and the Guppy config, you can make all data from a project (files, graph metadata, non-file graph data, Tube ETL-transformed graph data/metadata) restricted from view or download.  
 * Through the user.yaml and Guppy config, you can make some transformed aggregate data indices open-access while the individual record data in the files, graph, and other non-aggregate transformation indices are controlled access. You can make visualizations available for these open-access aggregate data indices.  
 * Through the user.yaml and Indexd authz, you can make `project A` open access, while `project B` is controlled access. People with access to `project B` can see query results including both project records, while others will only see query results from `project A`.  
 
@@ -37,10 +38,10 @@ Although most data in Gen3 are controlled-access by default, you can set data to
 
 ### Open to anonymous users
 
-You can make data open to viewing by anyone who is not logged in (ie, anonymous or unauthenticated). This is defined by creating policies that grant read-access to the projects or other resources you want to make open-access, and adding that policy to the `anonymous_policies` field in the user yaml, as shown below:
+You can make data open to viewing by anyone who is not logged in (i.e., anonymous or unauthenticated). This is defined by creating policies that grant read-access to the projects or other resources you want to make open-access, and adding that policy to the `anonymous_policies` field in the user yaml, as shown below:
 
 ```YAML
-# user yaml config for making data open to anonymous users (ie, users who are not logged in)
+# user yaml config for making data open to anonymous users (i.e., users who are not logged in)
 authz:
   
   anonymous_policies: # policies automatically given to anyone, even if they are not authenticated
@@ -98,12 +99,12 @@ authz:
       - sheepdog_reader
     resource_paths:
       - /open
-      - /programs/<program name>/projects/<project you want to be open-access> # eg, /programs/OpenProgram/projects/OpenData
+      - /programs/<program name>/projects/<project you want to be open-access> # e.g., /programs/OpenProgram/projects/OpenData
 ```
 
 ### Open to all authenticated users
 
-You can also make data open to viewing by anyone who is logged in (ie, authenticated). Similar to how you grant access to anonymous users above, you first create policies that grant read-access to the projects or other resources you want to make open-access. But, instead of adding that policy to the `anonymous_policies` field in the user yaml, you add it to `all_users_policies`, as shown below:  
+You can also make data open to viewing by anyone who is logged in (i.e., authenticated). Similar to how you grant access to anonymous users above, you first create policies that grant read-access to the projects or other resources you want to make open-access. But, instead of adding that policy to the `anonymous_policies` field in the user yaml, you add it to `all_users_policies`, as shown below:  
 
 ```YAML
 authz:
@@ -125,7 +126,7 @@ Most data are controlled-access by default in Gen3. This includes: graph data (s
 For most controlled-access data, the general steps for configuring access are the same:
 
 1. Identify the **resource** that will control access to the data. This is most commonly the project name, but can be distinct resources for some types of data.  
-2. Specify the **resource in the user.yaml**. If it is a project, the resource will have the form `/programs/<program name>/projects/<project name>`. Otherwise, it will have the form `/<resource name>`.  
+2. Specify the **resource in the user.yaml**. If it is a project, the resource will have the form `/programs/<program name>/projects/<project name>`. Otherwise, it will have the form `/<resource name>` (e.g., `/open`).  
 3. In the user.yaml, **create a policy** that grant users `access` or `read`-access to the resource.  
 4. In the user.yaml, **grant the policy** to appropriate users (and wait for usersync to run).  
 
@@ -174,14 +175,14 @@ authz:
     <username>: {}
 ```
 
-Output from querying the graph database (eg, querying the graph model through the Query page or querying through the Gen3 SDK Submission class) is governed by whether you have a policy that grants you read permissions for a controlled project.
+Output from querying the graph database (e.g., querying the graph model through the Query page or querying through the Gen3 SDK Submission class) is governed by whether you have a policy that grants you read permissions for a controlled project.
 
 
 ### Controlling access to ETL-transformed graph data (created by Tube from the Sheepdog database)
 
-ETL-transformed graph data indices have more flexibility for control. By default, access is controlled at the level of project, like the graph data.  
+Tube ETL-transformed graph data indices have more flexibility for control. By default, access is controlled at the level of project, like the graph data.  
 
-However, ETL-transformed graph data indices can be set to have the following access controls using the `tier_access_level` in the global config ([you can see the Guppy documentation about this here](https://github.com/uc-cdis/guppy/tree/master#tiered-access)):  
+However, Tube ETL-transformed graph data indices can be set to have the following access controls using the `tier_access_level` in the global config ([you can see the Guppy documentation about this here](https://github.com/uc-cdis/guppy/tree/master#tiered-access)):  
 
 * **Control access based on project**, matching the access level of the graph data. This can be set with **`tier_access_level: private`**. This is the default configuration.  
 * **Control access to data in collector-type indices** based on project, but permit **open access to data in aggregator-type indices**. This can be set with **`tier_access_level: regular`** and uses a minimum threshold of records present in the query output (as defined by you with the `tier_access_limit` property). If the number of records meets or exceeds the `tier_access_limit` value, the results will be returned even if the user does not have a policy that grants access to the project. However, if the query results in fewer records than the defined limit, it will instead return a message that there are too few records.  
@@ -267,13 +268,9 @@ authz:
     <username>: {}
 ```
 
-### Controlling access to metadata-service (MDS) data and ETL-transformed MDS data
-
-Although data in the metadata-service (MDS) is open by default, the Gen3 product team is currently developing an option to control access to MDS data through `authz`. Although this is not quite available yet - watch the Gen3 release notes for this new feature for optional controlled-access through `authz` implemented for MDS data/metadata and ETL-transformed MDS data/metadata.  
-
 ### Controlling access by protecting frontend pages from access
 
-In the new Frontend-Framework service, each page can be optionally protected enforce authorization through policy. By default, all pages are unprotected (viewable by anonymous users) except Profile, Data Library, and Workspaces, which require the user to be logged in.  
+In the new Frontend-Framework service, each page can optionally enforce authorization through policy. By default, all pages are unprotected (viewable by anonymous users) except Profile, Data Library, and Workspaces, which require the user to be logged in.  
 
 You can see information about how to set up page protection in the [Frontend-Framework service documentation](https://github.com/uc-cdis/gen3-frontend-framework/blob/develop/docs/Configuration/ProtectingPages.md). It requires both configuration in the user.yaml and configuration through the authz.json in the frontend framework.  
 
