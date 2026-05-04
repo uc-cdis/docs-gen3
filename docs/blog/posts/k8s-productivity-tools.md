@@ -5,8 +5,8 @@ authors:
 date: 2023-10-13
 slug: k8s tools
 categories:
-  - Operator
-  - CTDS
+  - For Gen3 Operators
+  - From CTDS
 tags:
   - Kubernetes
   - Minikube

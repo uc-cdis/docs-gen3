@@ -5,8 +5,8 @@ authors:
 date: 2023-09-13
 slug: Gen3 on laptop
 categories:
-  - Operator
-  - CTDS
+  - For Gen3 Operators
+  - From CTDS
 tags:
   - Kubernetes
   - Minikube
