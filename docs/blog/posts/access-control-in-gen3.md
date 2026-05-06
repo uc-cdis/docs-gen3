@@ -4,7 +4,7 @@ slug: access-control-in-gen3
 authors:
  - sara
 date: 2026-05-04
-draft: true
+draft: false
 categories:
   - How does Gen3...
   - From CTDS
@@ -32,7 +32,7 @@ Some examples of what can be controlled-access (just a few of many):
 
 You can make data open-access by setting assorted data permissions so that anyone can access your data (or some parts of them) even if they’re not authenticated (logged in).  
 
-Some data are open-access by default in Gen3. This includes the data/metadata in MDS records, ETL-transformed MDS data (created through AggMDS), and the metadata in Indexd records. (Note: although the metadata in the Indexd records are open-access, the files described by the Indexd records are controlled-access by default through their `authz` values.)
+Some data are open-access by default in Gen3. This includes the MDS data/metadata, AggMDS data (ETL-transformed MDS data), and the Indexd records metadata. (Note: although the metadata in the Indexd records are open-access, the files described by the Indexd records are controlled-access by default through their `authz` values.)
 
 Although most data in Gen3 are controlled-access by default, you can set data to be open-access.  
 
@@ -232,7 +232,6 @@ authz:
               - name: ProjA
               - name: ProjA_raw_files
               - name: ProjA_processed_files
-              - name: ProjA_immune_files
   
   roles:
   - id: fence_storage_reader
