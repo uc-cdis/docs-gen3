@@ -53,7 +53,7 @@ authz:
   - name: open
   - name: programs
       subresources:
-        - <program name>
+        - name: <program name>
           subresources:
             - name: projects
               subresources:
@@ -127,16 +127,17 @@ For most controlled-access data, the general steps for configuring access are th
 
 1. Identify the **resource** that will control access to the data. This is most commonly the project name, but can be distinct resources for some types of data.  
 2. Specify the **resource in the user.yaml**. If it is a project, the resource will have the form `/programs/<program name>/projects/<project name>`. Otherwise, it will have the form `/<resource name>` (e.g., `/open`).  
-3. In the user.yaml, **create a policy** that grant users `access` or `read`-access to the resource.  
-4. In the user.yaml, **grant the policy** to appropriate users (and wait for usersync to run).  
+3. In the user.yaml, **create a policy** that grants users `access` or `read`-access to the resource. [What does this mean]
+4. In the user.yaml, **grant the policy** to appropriate users
+5. Don't forget to run the usersync job to apply the updated access! 
 
 Below, we describe how access is controlled for: graph data (and transformed graph data); file data; and (coming soon) MDS data (and transformed MDS data).  
 
 ### Controlling access to graph (Sheepdog) data
 
-Access to **graph data** (whether graph metadata or non-file data in the graph) **is controlled at the level of project**. (Tip: If you have different consent groups that require different policies for access, you should make them different projects to control access independently). You can set a project to be open-access ([as described above](#open-access-data)) or controlled-access in the user.yaml.
+Access to **graph data** (whether graph metadata or non-file data in the graph) **is controlled at the project level**. (Tip: If you have different consent groups that require different policies for access, you should make them different projects to control access independently). You can set a project to be open-access ([as described above](#open-access-data)) or controlled-access in the user.yaml.
 
-To create access to a project's graph data, add the project (and the program, if it is not already listed as a resource) to the list of resources. An example for how to add a program and project to the resources list is provided in the [open-access data user.yaml config shown above](#open-to-all-authenticated-users).
+To configure access to a project's graph data, add the project (and the program, if it is not already listed as a resource) to the list of resources. An example for how to add a program and project to the resources list is provided in the [open-access data user.yaml config shown above](#open-to-all-authenticated-users).
 
 Then, create a policy that provides read-access to the project resource. An example for creating this policy is also shown in the [open-access data user.yaml config shown above](#open-to-all-authenticated-users).  
 
@@ -184,8 +185,8 @@ Tube ETL-transformed graph data indices have more flexibility for control. By de
 
 However, Tube ETL-transformed graph data indices can be set to have the following access controls using the `tier_access_level` in the global config ([you can see the Guppy documentation about this here](https://github.com/uc-cdis/guppy/tree/master#tiered-access)):  
 
-* **Control access based on project**, matching the access level of the graph data. This can be set with **`tier_access_level: private`**. This is the default configuration.  
-* **Control access to data in collector-type indices** based on project, but permit **open access to data in aggregator-type indices**. This can be set with **`tier_access_level: regular`** and uses a minimum threshold of records present in the query output (as defined by you with the `tier_access_limit` property). If the number of records meets or exceeds the `tier_access_limit` value, the results will be returned even if the user does not have a policy that grants access to the project. However, if the query results in fewer records than the defined limit, it will instead return a message that there are too few records.  
+* **Control access based on project**, matching the access level of the graph data. This can be set with **`tier_access_level: private`**. This is the default configuration.
+* **Control access based on project**, but allow **open access to aggregated data**. This can be set with **`tier_access_level: regular`** and further configured through the `tier_access_limit` setting. This allows users without project access to explore aggregated data, while protecting controlled data by restricting access to individual records. If the number of records is below the `tier_access_limit`, aggregated data is restricted as well: for example, if the query filters applied would reduce the aggregated results to a single record, a user without access will not see any aggregated data.
 * **Open access**, even if the graph data is controlled-access. This can be set with **`tier_access_level: libre`**. You might want to do this if the transformation provides further anonymization to the data.  
 
 In addition to using the site-wide global `tier_access_limit` property as described above, Gen3 users also have the **option to set `tier_access_limit` individually for each index**. [This is described in the Guppy documentation](https://github.com/uc-cdis/guppy/blob/master/doc/index_scoped_tiered_access.md).  
@@ -279,3 +280,5 @@ You can see information about how to set up page protection in the [Frontend-Fra
 Gen3 also has a service, [Requestor, that allows users to request access to resources](https://github.com/uc-cdis/requestor) and allows operators to grant access in a programmatic, auditable manner that maintains logs of requests and approvals. It bypasses the need to add users to the user.yaml and grants (and can also remove) policies directly to a user in the platform. You can use Requestor to manage access for anything that can be defined as a resource.  
 
 *Did you enjoy this post? You can find other posts in the How does Gen3 series at [https://docs.gen3.org/blog/category/how-does-gen3/](https://docs.gen3.org/blog/category/how-does-gen3/).*
+
+[TODO: could link to https://github.com/uc-cdis/fence/blob/master/docs/additional_documentation/user.yaml_guide.md "for more information"]
