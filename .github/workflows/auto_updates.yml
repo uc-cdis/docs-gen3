@@ -37,12 +37,12 @@ jobs:
 
       - name: Download OpenAPI spec
         run: |
-          curl -L https://raw.githubusercontent.com/uc-cdis/gen3-ai/refs/heads/main/docs/api.html -o ./docs/gen3-resources/user-guide/api/gen3_ai_api.html
+          curl -L https://raw.githubusercontent.com/uc-cdis/gen3-ai/refs/heads/main/docs/api.html -o ./docs/gen3-resources/developer-guide/api/gen3_ai_api.html
 
       - name: Check for changes
         id: check_changes
         run: |
-          git add ./docs/gen3-resources/user-guide/api/gen3_ai_api.html
+          git add ./docs/gen3-resources/developer-guide/api/gen3_ai_api.html
 
           # if existing secrets just moved line numbers
           # note: if detect-secrets actually fails on a NEW false
@@ -64,7 +64,7 @@ jobs:
           BRANCH_NAME="chore/update-api-docs-${{ github.run_id }}"
           git checkout -b $BRANCH_NAME
 
-          git add ./docs/gen3-resources/user-guide/api/gen3_ai_api.html
+          git add ./docs/gen3-resources/developer-guide/api/gen3_ai_api.html
 
           # if existing secrets just moved line numbers
           # note: if detect-secrets actually fails on a NEW false

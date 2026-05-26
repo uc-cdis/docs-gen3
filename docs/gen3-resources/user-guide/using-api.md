@@ -1,7 +1,5 @@
 # Using the API
 
-> We're working on getting official API documentation auto-generated from our backend and published here. Our first batch is a pre-alpha, proposed API for some of the [Gen3 AI support](./api/gen3_ai_api.html) we're building.
-
 ## What does the API do?
 
 The application programming interface (API) can be a set of code, rules, functions, and URLs that allow apps, software, servers or more generally speaking, systems, to communicate with each other. The communication between APIs consists of requests and (data) responses, usually in .JSON format.

@@ -63,6 +63,7 @@ nav:
     - gen3-resources/developer-guide/index.md
     - Gen3 Architecture:  gen3-resources/developer-guide/architecture.md
     - Key Repositories:  gen3-resources/developer-guide/key_repos.md
+    - Gen3 APIs for Devs: gen3-resources/developer-guide/using-api-for-dev.md
     - Contribute Code to Gen3: gen3-resources/developer-guide/contribute.md
   - Tools:
     - gen3-resources/tools/index.md
