@@ -5,8 +5,8 @@ authors:
 date: 2023-10-13
 slug: k8s tools
 categories:
-  - Operator
-  - CTDS
+  - For Gen3 Operators
+  - From CTDS
 tags:
   - Kubernetes
   - Minikube
@@ -198,8 +198,8 @@ kubectx and kubens allow you to quickly switch between Kubernetes contexts and n
 
 Some examples:
 
-kubens staging - switch to staging namespace
-kubectx minikube - change context to minikube cluster
+`kubens` staging - switch to staging namespace  
+`kubectx` minikube - change context to minikube cluster
 
 No more typing out full context and namespace names!
 

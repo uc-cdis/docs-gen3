@@ -1,4 +1,4 @@
-f# Customize appearance of the front end
+# Customize appearance of the front end
 
 Below we show a few examples of how to customize the Gen3 Data Portal.
 
@@ -62,7 +62,7 @@ The "tooltip" shows text upon hovering over the icon.
 
 ![navigationbar][navigationbar image]
 
-* [Review the code to edit icon, link, color, tooltip, and name of the navigation items](https://github.com/uc-cdis/cdis-manifest/blob/551f0963e60f6000ae8b9987592495406a031c81/gen3.datacommons.io/portal/gitops.json#L84-L134).
+* [Review the code to edit icon, link, color, tooltip, and name of the navigation items][gitops.json navbar].
 * Adding a new icon requires saving the icon in [this repository][icons] and [in this file][icons index].
 
 ## Data Commons or Mesh Title
@@ -276,6 +276,7 @@ if resp.status_code != 200:
 [gitops.json cards]: https://github.com/uc-cdis/cdis-manifest/blob/456e1a3b5b3cc5dc23b83e1f96c0770a2007162a/gen3.datacommons.io/portal/gitops.json#L46-L75
 [icons]: https://github.com/uc-cdis/data-portal/tree/master/src/img/icons
 [icons index]: https://github.com/uc-cdis/data-portal/blob/67f2b83227b9c3b48143bd2938cad160fc225394/src/img/icons/index.jsx
+[gitops.json navbar]: https://github.com/uc-cdis/cdis-manifest/blob/551f0963e60f6000ae8b9987592495406a031c81/gen3.datacommons.io/portal/gitops.json#L84-L134
 [navigationbar image]: img/navigationbar.png
 [brh]: https://brh.data-commons.org/
 [commons name image]: img/name-commons-or-mesh.png

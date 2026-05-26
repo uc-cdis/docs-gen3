@@ -4,8 +4,8 @@ authors:
   - qureshi
 date: 2023-08-13
 categories:
-  - Operator
-  - CTDS
+  - For Gen3 Operators
+  - From CTDS
 slug: k8s for development
 tags:
   - Kubernetes
