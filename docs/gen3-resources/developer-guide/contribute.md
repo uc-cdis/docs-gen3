@@ -4,11 +4,9 @@
 
 ### Ask questions
 
-If you have a question, check out #gen3_community on Slack.  Here you can ask both the maintainers at the Center for Translational Data Science, University of Chicago as well as the larger Gen3 community.  Request an invite [here](https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform).
+If you have a question, check out #gen3_community on Slack.  Here you can ask both the maintainers at the Center for Translational Data Science, University of Chicago as well as the larger Gen3 community.  [Request an invite here](https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform).
 
-You can also post to the Gen3 Forum [here](https://forums.gen3.org/).
-
-Finally, you can send an email request to the maintainers here (support@gen3.org).
+You can also send an [email request to the maintainers here](mailto:support@gen3.org).
 
 You may also [create an issue](#create-an-issue) in GitHub.
 
