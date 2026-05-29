@@ -18,4 +18,4 @@ If you know what changes are needed we encourage you to create a PR.  [Follow th
 
 We encourage Gen3 community users to join the Gen3 Community Slack channel to get assistance from and provide support to other community members and be alerted to Gen3 releases, webinars, and other developments. The Gen3 development team is also available on this Slack workspace for fielding technical questions. Please join with an organizational email, or be prepared to confirm your institutional affiliation by email. (If you have no institutional affiliation, you may still join, but we may have more questions for you.)  
 
-You can [request access to our slack page here](https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform). You can also start a conversation on our public [discussion board](https://forums.gen3.org/) or send an email to [support@gen3.org](mailto:support@gen3.org).
+You can [request access to our slack page here](https://docs.google.com/forms/d/e/1FAIpQLSczyhhOXeCK9FdVtpQpelOHYnRj1EAq1rwwnm9q6cPAe5a7ug/viewform). You can also send an email to [support@gen3.org](mailto:support@gen3.org).
