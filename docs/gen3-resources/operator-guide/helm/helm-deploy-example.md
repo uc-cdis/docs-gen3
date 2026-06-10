@@ -258,20 +258,20 @@ A minimal values.yaml will have a `global` section with nested `hostname` and `t
 
 ```
 global:
-hostname: user.dev-site.net
+    hostname: user.dev-site.net
 
     tls:
         key: |
-        -----BEGIN PRIVATE KEY-----
-        M...W
-        -----END PRIVATE KEY-----
-    cert: |
-        -----BEGIN CERTIFICATE-----
-        MII...jk=
-        -----END CERTIFICATE-----
-        -----BEGIN CERTIFICATE-----
-        MIIEV...yH04=
-        -----END CERTIFICATE-----
+            -----BEGIN PRIVATE KEY-----
+            M...W
+            -----END PRIVATE KEY-----
+        cert: |
+            -----BEGIN CERTIFICATE-----
+            MII...jk=
+            -----END CERTIFICATE-----
+            -----BEGIN CERTIFICATE-----
+            MIIEV...yH04=
+            -----END CERTIFICATE-----
 ```
 
 You can get the body of the key and the certificates using the `sudo cat` command with the path to your key and certificates, as indicated in the output at the end of the certificate creation:
@@ -452,10 +452,10 @@ To deploy an instance that allows a mock authorization, add these Arborist and F
 
 ```
 global:
-hostname: user.dev-site.net
+    hostname: user.dev-site.net
 
     tls:
-    [key and cert info]
+        [key and cert info]
 
     # Deploy postgres/elasticsearch in same deployment for development purposes.
     dev: true
