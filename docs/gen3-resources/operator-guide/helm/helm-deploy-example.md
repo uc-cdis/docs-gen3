@@ -452,10 +452,10 @@ To deploy an instance that allows a mock authorization, add these Arborist and F
 
 ```
 global:
-hostname: user.dev-site.net
+    hostname: user.dev-site.net
 
     tls:
-    [key and cert info]
+        [key and cert info]
 
     # Deploy postgres/elasticsearch in same deployment for development purposes.
     dev: true
