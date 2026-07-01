@@ -194,5 +194,4 @@ If the submission throws errors or claims the submission to be invalid, it will 
 [Fence programs and projects]: https://github.com/uc-cdis/fence/blob/master/docs/additional_documentation/user.yaml_guide.md#programs-and-projects-crud-access
 [Gen3 SDK]: https://uc-cdis.github.io/gen3sdk-python/_build/html/_modules/gen3/submission.html
 [toolbar submission]: img/Gen3_Toolbar_data_submission.png
-[submit data]: img/Gen3_Data_Submission_submit_data.png
 [upload file]: img/Gen3_Data_Submission_Use_Form.png

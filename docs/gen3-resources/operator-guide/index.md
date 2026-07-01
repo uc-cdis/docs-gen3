@@ -48,16 +48,12 @@ Compose-services was used to deploy Gen3 at a small scale, for experimental comm
 [Although we do not recommend using this, you can explore Gen3 compose-services here][compose-services]
 
 <!-- Links -->
-[Gen3 User Guide]: ../user-guide/index.md
-[Gen3 Developer Guide]: ../developer-guide/index.md
 [cloud-automation]: https://github.com/uc-cdis/cloud-automation/blob/master/doc/csoc-free-commons-steps.md
 [compose-services]: https://github.com/uc-cdis/compose-services/tree/master
 [helm guide]: helm/index.md
 [deploy overview]: helm/helm-deploy-overview.md
 [prerequisites]: prerequisites.md
 [infrastructure as code]: iac-overview.md
-[ssl]: ssl-cert.md
-[secrets]: secrets-mgr.md
 [authentication methods]: gen3-authn-methods.md
 [data dictionary]: create-data-dictionary.md
 [submit data]: submit-structured-data.md
