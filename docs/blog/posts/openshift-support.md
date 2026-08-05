@@ -3,7 +3,8 @@ draft: false
 authors:
   - qureshi
   - ed_malinowski
-date: 2026-08-03
+date: 
+  created_date: 2026-08-03
 slug: openshift
 categories:
   - For Gen3 Operators

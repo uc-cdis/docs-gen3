@@ -3,7 +3,8 @@ title: "A new blog series: How does Gen3..."
 slug: intro-to-how-does-gen3
 authors:
  - sara
-date: 2026-05-03
+date: 
+  created_date: 2026-05-03
 categories:
   - How does Gen3...
   - From CTDS
