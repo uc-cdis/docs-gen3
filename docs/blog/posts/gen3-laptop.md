@@ -3,7 +3,7 @@ draft: false
 authors:
   - qureshi
 date: 
-  created_date: 2023-09-13
+  created: 2023-09-13
 slug: Gen3 on laptop
 categories:
   - For Gen3 Operators

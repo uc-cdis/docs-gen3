@@ -4,7 +4,7 @@ slug: observability
 authors:
  - elise
 date: 
-  created_date: 2024-10-15
+  created: 2024-10-15
 categories:
   - For Gen3 Operators
   - From CTDS
