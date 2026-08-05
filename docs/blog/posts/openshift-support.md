@@ -2,6 +2,7 @@
 draft: false
 authors:
   - qureshi
+  - ed_malinowski
 date: 2026-08-03
 slug: openshift
 categories:

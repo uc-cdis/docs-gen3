@@ -1,13 +1,17 @@
 authors:
-  qureshi:
-    name: Jawad Qureshi
-    description: Lead Platform Engineer, CTDS
-    avatar: https://github.com/jawadqur.png
+  ed_malinowski:
+    name: Ed Malinowski
+    description: Platform Engineer, CTDS
+    avatar: https://github.com/emalinowski.png
   elise:
     name: Elise Castle
     description: Platform Engineer, CTDS
     avatar: https://github.com/EliseCastle23.png
+  qureshi:
+    name: Jawad Qureshi
+    description: Lead Platform Engineer, CTDS
+    avatar: https://github.com/jawadqur.png
   sara:
     name: Sara Volk de Garcia
-    description: User & Data Services, CTDS
+    description: Gen3 User & Data Services, CTDS
     avatar: https://github.com/smvgarcia.png
