@@ -1,8 +1,8 @@
 ---
 draft: false
 authors:
-  - qureshi
   - ed_malinowski
+  - qureshi
 date: 
   created_date: 2026-08-03
 slug: openshift
