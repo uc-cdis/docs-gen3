@@ -139,10 +139,13 @@ plugins:
   - tags
   - blog:
       enabled: true
-      draft: true # permit draft blog posts that aren't public
+      draft: true # permit draft blog posts that aren't public, but don't include drafts in build
+      draft_on_serve: true # do include draft posts when you serve locally to preview
       authors: true
       authors_file: blog/authors.yml
       authors_profiles: true
+      authors_profiles_name: Authors
+      authors_profiles_url_format: "{slug}"
       blog_dir: blog
       blog_toc: true
       categories: true

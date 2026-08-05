@@ -2,7 +2,8 @@
 draft: false
 authors:
   - qureshi
-date: 2023-09-13
+date: 
+  created: 2023-09-13
 slug: Gen3 on laptop
 categories:
   - For Gen3 Operators

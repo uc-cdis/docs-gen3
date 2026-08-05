@@ -3,7 +3,8 @@ title: "Observability"
 slug: observability
 authors:
  - elise
-date: 2024-10-15
+date: 
+  created: 2024-10-15
 categories:
   - For Gen3 Operators
   - From CTDS

@@ -1,8 +1,10 @@
 ---
 draft: false
 authors:
+  - ed_malinowski
   - qureshi
-date: 2026-08-03
+date: 
+  created: 2026-08-03
 slug: openshift
 categories:
   - For Gen3 Operators

@@ -2,7 +2,8 @@
 draft: false
 authors:
   - qureshi
-date: 2023-08-13
+date: 
+  created: 2023-08-13
 categories:
   - For Gen3 Operators
   - From CTDS

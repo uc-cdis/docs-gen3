@@ -2,7 +2,8 @@
 draft: false
 authors:
   - qureshi
-date: 2023-10-13
+date: 
+  created: 2023-10-13
 slug: k8s tools
 categories:
   - For Gen3 Operators
