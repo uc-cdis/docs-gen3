@@ -67,10 +67,10 @@ Before using the gen3-client to upload or download data, the gen3-client needs t
    gen3-client configure --profile=<profile_name> --cred=<credentials.json> --apiendpoint=<api_endpoint_url>
 
    Mac/Linux:
-   gen3-client configure --profile=demo --cred=~/Downloads/demo-credentials.json --apiendpoint=https://gen3.datacommons.io/
+   gen3-client configure --profile=demo --cred=~/Downloads/demo-credentials.json --apiendpoint=https://gen3.datacommons.io
 
    Windows:
-   gen3-client configure --profile=demo --cred=C:\Users\demo\Downloads\demo-credentials.json --apiendpoint=https://gen3.datacommons.io/
+   gen3-client configure --profile=demo --cred=C:\Users\demo\Downloads\demo-credentials.json --apiendpoint=https://gen3.datacommons.io
    ```
    > **NOTE:** For these user guides, https://gen3.datacommons.io is an example URL and can be replaced with the URL of other data commons powered by Gen3.
 
