@@ -1,59 +1,73 @@
 # Gen3 Data Client
 
-The gen3-client provides an easy-to-use, command-line interface for uploading and downloading data files to and from a Gen3 data commons from the terminal or command prompt, respectively.  In some systems "download" may be restricted to only within a Gen3 Workspace.  Note that Gen3 also comes with an SDK tool that can perform many of the same functions as the client for downloading along with many other features not found in the client.  You can read more about the Python SDK tool [here][SDK Tool].
+The gen3-client provides an easy-to-use, command-line interface for uploading and downloading data files to and from a Gen3 data commons from the terminal or command prompt, respectively.  In some systems, "download" may be restricted to only within a Gen3 Workspace.  Note that Gen3 also offers an SDK tool that can perform many of the same functions as the client for downloading, along with many other features not found in the client.  You can read more about the [Gen3 Python SDK tool here][SDK Tool].
 
 ## Installation
 
 A binary executable of the latest version of the gen3-client should be [downloaded from Github][Gen3 Client]. Choose the file that matches your operating system (Windows, Linux, or macOS).
 
-No installation is necessary. Simply download the correct version for your operating system and unzip the archive. The program is then executed from the command-line by running the command `gen3-client <options>`. For more detailed instructions, see the section below for your operating system.
+Download the correct version for your operating system and install according to the instructions below. The program is then executed from the command-line by running the command `gen3-client <options>`. 
 
-> **Note:** Do not try to run the program by double-clicking on it. Instead, execute the program from within the shell / terminal / command prompt. The program does not provide a graphical user interface (GUI) at this time; so, commands are sent by typing them into the terminal.
+> **Note:** If the directory containing the gen3-client binary is not added to the $PATH environmental variable, you will need to preface all calls to gen3-client with the path. For example: MacOS installs gen3-client in the /Applications directory by default. If the /Applications directory is not added to your PATH variable, all your gen3-client commands will need to start with `/Applications/gen3-client` instead of just 'gen3-client`. Instructions for adding the directory to the PATH are provided in the installation directions below.
 
-### Mac OS X / Linux Installation Instructions
+> **Note:** Do not try to run the program by double-clicking on it. Instead, execute the program from within the shell / terminal / command prompt. The program does not provide a graphical user interface (GUI) at this time; commands are sent by typing them into the terminal.
 
-1. Download the latest Mac OS X or Linux version of the gen3-client [here][Gen3 Client].
-2. Unzip the archive.
-3. Add the unzipped executable to a directory, for example: `~/.gen3/gen3-client.exe`.
-4. Open a terminal window.
-5. Add the directory containing the executable to your Path environment variable by entering this command in the terminal: `echo 'export PATH=$PATH:~/.gen3' >> ~/.bash_profile`.
-6. Run `source ~/.bash_profile` or restart your terminal.
-7. Now you can execute the program by opening a terminal window and entering the command `gen3-client`.
+### Mac OS X Installation Instructions  
 
-### Windows Installation Instructions
-1. [Download the Windows version of the gen3-client here][Gen3 Client].
-2. Unzip the archive.
-3. Add the unzipped executable to a directory, for example: `C:\Program Files\gen3-client\gen3-client.exe`.
-4. Open the Start Menu and type “edit environment variables”.
-5. Open the option “Edit the system environment variables”.
-6. In the “System Properties” window that opens up, on the “Advanced” tab, click on the “Environment Variables” button.
-7. In the box labeled “System Variables”, find the “Path” variable and click “Edit”.
-8. In the window that pops up, click “New”.
-9. Type in the full directory path of the executable file (for example, `C:\Program Files\gen3-client)`.
-10. Click “Ok” on all the open windows and restart the command prompt if it is already open by entering `cmd` into the start menu and hitting enter.
+1. Download the latest Mac OS X version of the [gen3-client here][Gen3 Client].  
+2. Right-click the package and open with Installer. Follow the prompts on the Installer window. *The default is for Installer to place the gen3-client binary in the `/Applications` directory. You can change that if you want.*   
+4. Open a terminal window.  
+5. Add the directory containing the executable to your PATH environment variable by entering this command in the terminal: `echo 'export PATH=$PATH:~/Applications' >> ~/.bash_profile`.  
+6. Run `source ~/.bash_profile` or restart your terminal.  
+7. Now you can execute the program by opening a terminal window and entering the command `gen3-client`.  
+
+### Linux Installation Instructions  
+
+1. Download the latestLinux version of the [gen3-client here][Gen3 Client].  
+2. Unzip the archive.  
+3. Put the gen3-client binary into your preferred directory (e.g., `~/bin`).  
+4. Ensure the path to the directory containing the executable is in your $PATH environment variable by entering this command in the terminal: `echo 'export PATH=$PATH:$HOME/{bin or path_to_preferred_directory} >> ~/.profile`.  
+5. Run `source ~/.profile` or restart your terminal.  
+6. Now you can execute the program by opening a terminal window and entering the command `gen3-client`.  
+
+### Windows Installation Instructions  
+
+1. [Download the Windows version of the gen3-client here][Gen3 Client].  
+2. Unzip the downloaded file.  
+3. Add the unzipped executable to your preferred directory. For example: `C:\Program Files\gen3-client\gen3-client.exe`.  
+4. Open the Start Menu and type “edit environment variables”.  
+5. Open the option “Edit the environment variables for your account”.  
+6. In the Control Panel window that opens up, click on the “Environment Variables” button.  
+7. In the User Variables part of the window (the top section), look to see if there is a `Path` variable on the list.  
+	
+	* If there is not: Click New, and create a new user variable with the Variable Name as Path and the Variable Value as the full path to the directory holding the Gen3 Client executable file. (Note: do not include the file name in the path - only up to the directory holding the file.)  
+	* If there is a Path variable on the User Variables list: Click on the Path variable in the list and click Edit. Then, in the Edit window that opens, click New to add a new path value to the Path variable. Type or paste the full path to the directory holding the Gen3 Client executable file. (Note: do not include the file name in the path - only up to the directory holding the file.)  
+
+10. Click “Ok” on all the open windows and restart the command prompt if it is already open by entering `cmd` into the start menu and hitting enter.  
 
 > **Note:** To download the latest version of the file from the command-line, use the following commands from your terminal:
- ```
- # Mac OS:
+ ```shell title="Mac OS command to update gen3-client"
  curl https://api.github.com/repos/uc-cdis/cdis-data-client/releases/latest | grep browser_download_url.*osx |  cut -d '"' -f 4 | wget -qi -
  ```
- ```
- # Linux:
+ ```shell title="Linux command to update gen3-client"
  curl https://api.github.com/repos/uc-cdis/cdis-data-client/releases/latest | grep browser_download_url.*linux |  cut -d '"' -f 4 | wget -qi -
  ```
 
 
-### View the Help Menu
-To check that your copy of the client is working and confirm the version, the tool can be run on the command-line in your terminal or command prompt by entering `gen3-client`. Typing this alone or `gen3-client help` will display the help menu. For help on a particular command, enter: `gen3-client <command> help`. Note that you must provide the full path of the tool in order for the commands to run, for example, `./gen3-client` while working from the directory containing the client. Alternatively, you can [add the location of the gen3-client executable to your shell’s PATH environment variable][PATH].
+### View the Help Menu  
+
+To check that your copy of the client is working and confirm the version, the tool can be run on the command-line in your terminal or command prompt by entering `gen3-client`. Typing this alone or `gen3-client help` will display the help menu. For help on a particular command, enter: `gen3-client <command> help`.  
+
+Note that, if you do not follow the installation instructions to add the path to the gen3-client binary to the PATH variable, you must provide the full path of the tool in order for the commands to run. For example, `/Applications/gen3-client` for default Mac installation. This can be resolved by adding the directory with the binary to your PATH variable as described in the installation instructions.
 
 
 ## Configure a Profile with Credentials
 
-Before using the gen3-client to upload or download data, the gen3-client needs to be configured with API credentials downloaded from the user’s data commons Profile:
+Before using the gen3-client to upload or download data, the gen3-client needs to be configured with API credentials downloaded from the user’s data commons Profile page:
 
-1. To download the “credentials.json” from the data commons, the user should start from that common’s Windmill data portal, followed by clicking on “Profile” in the top navigation bar and then creating an API key. In the popup window which informs user an API key has been successfully created, click the “Download json” button to save a local copy of the API key.
+1. To download the “credentials.json” from the data commons, the user should start at the data commons frontend URL and click on “Profile” in the top navigation bar and then creating an API key. In the popup window reporting that an API key has been successfully created, click the “Download json” button to save a local copy of the API key.
 
-   ![Screenshot of Windmill data portal showing how you can create an API key][img create API key]
+   ![Screenshot of data portal showing how you can create an API key][img create API key]
 
 2. From the command-line, run the `gen3-client configure` command with the `--cred`, `--apiendpoint`, and `--profile` flags (see examples below).
 
@@ -62,10 +76,10 @@ Before using the gen3-client to upload or download data, the gen3-client needs t
    gen3-client configure --profile=<profile_name> --cred=<credentials.json> --apiendpoint=<api_endpoint_url>
 
    Mac/Linux:
-   gen3-client configure --profile=demo --cred=~/Downloads/demo-credentials.json --apiendpoint=https://gen3.datacommons.io
+   gen3-client configure --profile=demo --cred=~/Downloads/demo-credentials.json --apiendpoint=https://gen3.datacommons.io/
 
    Windows:
-   gen3-client configure --profile=demo --cred=C:\Users\demo\Downloads\demo-credentials.json --apiendpoint=https://gen3.datacommons.io
+   gen3-client configure --profile=demo --cred=C:\Users\demo\Downloads\demo-credentials.json --apiendpoint=https://gen3.datacommons.io/
    ```
    > **NOTE:** For these user guides, https://gen3.datacommons.io is an example URL and can be replaced with the URL of other data commons powered by Gen3.
 
@@ -83,10 +97,10 @@ Before using the gen3-client to upload or download data, the gen3-client needs t
    ```
    > **NOTE:** These keys must be treated like important passwords; never share the contents of the `credentials.json` and gen3-client `gen3_client_config.ini` or `config` file!
 
-   You should receive an error if you enter an incorrect API endpoint for your credentials. For example:
+   You will receive an error if you enter an incorrect API endpoint for your credentials. For example:
    ```
-   ~> gen3-client configure --profile=demo --cred=~/Downloads/wrong-credentials.json --apiendpoint=https://nci-crdc-demo.datacommons.io
-   2019/11/19 11:58:15 Error occurred when validating profile config: Invalid credentials for apiendpoint 'https://nci-crdc-demo.datacommons.io': check if your credentials are expired or incorrect.
+   ~> gen3-client configure --profile=demo --cred=~/Downloads/wrong-credentials.json --apiendpoint=https://gen3.datacommons.io
+   2019/11/19 11:58:15 Error occurred when validating profile config: Invalid credentials for apiendpoint 'gen3.datacommons.io': check if your credentials are expired or incorrect.
    ```
 
    To confirm you successfully configured a profile with the correct authorization privileges, you can run the `gen3-client auth` command, which should list your access privileges for each project in the commons you have access to. For example:
@@ -94,9 +108,9 @@ Before using the gen3-client to upload or download data, the gen3-client needs t
    ```
    ~> gen3-client auth --profile=demo
    2019/11/19 11:59:04
-   You have access to the following project(s) at https://nci-crdc-demo.datacommons.io:
-   2019/11/19 11:59:04 CPTAC [read read-storage]
-   2019/11/19 11:59:04 DCF [create delete read read-storage update upload write-storage]
+   You have access to the following project(s) at https://gen3.datacommons.io:
+   2019/11/19 11:59:04 1000_Genomes_Project [read read-storage]
+   2019/11/19 11:59:04 CCLE [create delete read read-storage update upload write-storage]
    ```
 
 
@@ -107,7 +121,7 @@ Before using the gen3-client to upload or download data, the gen3-client needs t
 
 Files with a valid storage location in the file index database (AKA *indexd*) can be downloaded using the `gen3-client download-single` command by providing the file's object_id (AKA *GUID* or *did*).
 
-For example, the indexd record for object_id ["00149bcf-e057-4ecc-b22d-53648ae0b35f"](https://gen3.datacommons.io/index/00149bcf-e057-4ecc-b22d-53648ae0b35f) points to a [location in the GDC](https://api.gdc.cancer.gov/data/47b982b3-c7ce-4ca7-8c86-c71c15979620).
+For example, the indexd record for object_id ["dg.OADC/9baeeb42-563f-47fe-87f7-a6ae17fc3d20"](https://gen3.datacommons.io/index/index/dg.OADC/9baeeb42-563f-47fe-87f7-a6ae17fc3d20) points to a [location in the Gen3 Data Hub](https://gen3.datacommons.io/files/dg.OADC/9baeeb42-563f-47fe-87f7-a6ae17fc3d20).
 
 
 Required Flags:
@@ -130,7 +144,7 @@ Optional Flags:
 Example Usage:
 
 ```
-gen3-client download-single --profile=demo --guid=00149bcf-e057-4ecc-b22d-53648ae0b35f --no-prompt --skip-completed
+gen3-client download-single --profile=demo --guid=dg.OADC/9baeeb42-563f-47fe-87f7-a6ae17fc3d20 --no-prompt --skip-completed
 ```
 
 ### Multiple File Download with Manifest
@@ -189,7 +203,7 @@ gen3-client upload --profile=demo --upload-path=test.txt
 ```
 5. Download a file:
 ```
-gen3-client download-single --profile=demo --guid=39b05d1f-f8a2-478c-a728-c16f6d0d8a7c --no-prompt
+gen3-client download-single --profile=demo --guid=dg.OADC/9baeeb42-563f-47fe-87f7-a6ae17fc3d20 --no-prompt
 ```
 
 
@@ -197,7 +211,7 @@ gen3-client download-single --profile=demo --guid=39b05d1f-f8a2-478c-a728-c16f6d
 ## Uploading data with the Data Client
 
 
-Uploading data assumes you have a functioning Gen3 system and all the appropriate privileges.  Once you have installed and configured the data client you should be ready to upload files (i.e. [unstructured data][unstructured data upload]).
+Uploading data assumes you have a functioning Gen3 system and all the appropriate privileges.  Once you have installed and configured the data client, you should be ready to upload files (i.e., [unstructured data][unstructured data upload]).
 
 For the typical data contributor, the `gen3-client upload` command should be used to upload data files to a Gen3 Data Commons. The commands `upload-single` and `upload-multiple` are used only in special cases, for example, when a file or collection of files are uploaded to specific GUIDs *after* generating structured data records for the files. These two commands are described in further detail in sections 3 and 4 below.
 
