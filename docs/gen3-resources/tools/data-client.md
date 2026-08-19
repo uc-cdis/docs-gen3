@@ -45,15 +45,6 @@ Download the correct version for your operating system and install according to 
 
 10. Click “Ok” on all the open windows and restart the command prompt if it is already open by entering `cmd` into the start menu and hitting enter.  
 
-> **Note:** To download the latest version of the file from the command-line, use the following commands from your terminal:
- ```shell title="Mac OS command to update gen3-client"
- curl https://api.github.com/repos/uc-cdis/cdis-data-client/releases/latest | grep browser_download_url.*osx |  cut -d '"' -f 4 | wget -qi -
- ```
- ```shell title="Linux command to update gen3-client"
- curl https://api.github.com/repos/uc-cdis/cdis-data-client/releases/latest | grep browser_download_url.*linux |  cut -d '"' -f 4 | wget -qi -
- ```
-
-
 ### View the Help Menu  
 
 To check that your copy of the client is working and confirm the version, the tool can be run on the command-line in your terminal or command prompt by entering `gen3-client`. Typing this alone or `gen3-client help` will display the help menu. For help on a particular command, enter: `gen3-client <command> help`.  
