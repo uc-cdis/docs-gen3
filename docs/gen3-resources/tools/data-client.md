@@ -16,10 +16,10 @@ Download the correct version for your operating system and install according to 
 
 1. Download the latest Mac OS X version of the [gen3-client here][Gen3 Client].  
 2. Right-click the package and open with Installer. Follow the prompts on the Installer window. *The default is for Installer to place the gen3-client binary in the `/Applications` directory. You can change that if you want.*   
-4. Open a terminal window.  
-5. Add the directory containing the executable to your PATH environment variable by entering this command in the terminal: `echo 'export PATH=$PATH:~/Applications' >> ~/.bash_profile`.  
-6. Run `source ~/.bash_profile` or restart your terminal.  
-7. Now you can execute the program by opening a terminal window and entering the command `gen3-client`.  
+3. Open a terminal window.  
+4. Add the directory containing the executable to your PATH environment variable by entering this command in the terminal: `echo 'export PATH=$PATH:~/Applications' >> ~/.bash_profile`.  
+5. Run `source ~/.bash_profile` or restart your terminal.  
+6. Now you can execute the program by opening a terminal window and entering the command `gen3-client` (instead of `/Applications/gen3-client`).  
 
 ### Linux Installation Instructions  
 
