@@ -1,0 +1,29 @@
+authors:
+  ed_malinowski:
+    name: Ed Malinowski
+    description: Platform Engineer, CTDS
+    avatar: https://github.com/emalinowski.png
+    slug: ed_malinowski
+  elise:
+    name: Elise Castle
+    description: Platform Engineer, CTDS
+    avatar: https://github.com/EliseCastle23.png
+    slug: elise_castle
+  qureshi:
+    name: Jawad Qureshi
+    description: Lead Platform Engineer, CTDS
+    avatar: https://github.com/jawadqur.png
+    slug: jawad_qureshi
+  sara:
+    name: Sara Volk de Garcia
+    description: Gen3 User & Data Services, CTDS
+    avatar: https://github.com/smvgarcia.png
+    slug: sara_volk_de_garcia
+    
+# authors:
+#   <author>:
+#     name: string        # Author name
+#     description: string # Author description
+#     avatar: url         # Author avatar
+#     slug: url           # Author profile slug
+#     url: url            # Author website URL
