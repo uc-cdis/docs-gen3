@@ -1,0 +1,12 @@
+name: Test Documentation
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/configure-pages@v6
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.2
+      - run: uv run --locked zensical build --clean

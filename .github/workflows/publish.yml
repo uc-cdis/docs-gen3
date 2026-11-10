@@ -1,4 +1,7 @@
 name: Publish Documentation
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 on:
   # any updates to main/master will actually publish to Pages
   push:
@@ -17,19 +20,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/configure-pages@v6
-      - uses: actions/checkout@v6
-      - name: Configure Git Credentials
-        run: |
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-      - name: Add CNAME file
-        run: echo 'docs.gen3.org' > ./docs/CNAME
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/setup-python@v6
-        with:
-          python-version: 3.x
-      - run: pip install zensical
-      - run: zensical build --clean
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.2
+      - run: uv run --locked zensical build --clean
       - uses: actions/upload-pages-artifact@v5
         with:
           path: site
