@@ -62,4 +62,4 @@ Once you submit your PR, a member of the CTDS staff may request changes or ask y
 
 ## Markdown extensions and Zensical plug-ins available in our documentation
 
-Extensions enable you to use simple Markdown syntax to achieve some complex rendering. To see the list of the available extensions and plug-ins, see the bottom of the config file [zensical.toml](zensical.toml) in the `project.markdown_extensions` sections and see [Zensical documentation](https://zensical.org/docs/setup/extensions/).
+Extensions enable you to use simple Markdown syntax to achieve some complex rendering. To see the list of the available extensions and plug-ins, see the bottom of the config file mkdocs.yml in the `plugins` section.
