@@ -88,22 +88,7 @@ theme:
   custom_dir: overrides
 
   palette:
-    - primary: black
-
-
-   # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: brh_platform
-      toggle:
-        icon: material/eye
-        name: Switch to dark mode
-
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: brh_platform_dark
-      toggle:
-        icon: material/eye-outline
-        name: Switch to light mode
+    primary: black
 extra_css:
   - stylesheets/extra.css
 extra_javascript:
