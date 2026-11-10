@@ -179,7 +179,7 @@ When generating the release notes there are [conventions][release notes conventi
 
 
 <!-- Creating a Data Dictionary -->
-[Exploration Page]: ../user-guide/portal.md/#exploration-page
+[Exploration Page]: ../user-guide/portal.md#exploration-page
 [datadictionary github]: https://github.com/uc-cdis/datadictionary/
 [NCI DCFS]: https://nci-crdc.datacommons.io/login
 [DCF dictionary viewer]: https://nci-crdc.datacommons.io/dd

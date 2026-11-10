@@ -291,7 +291,7 @@ A graphical model of the structured data of a data commons can be browsed by nav
 [API instructions]: search.md#use-the-api
 [Gen3 client]: access-data.md#download-files-using-the-gen3-client
 [Gen3 bulk download]: ../tools/data-client.md#multiple-file-download-with-manifest
-[Gen3 Workspace]: analyze-data.md/#launch-workspace
+[Gen3 Workspace]: analyze-data.md#launch-workspace
 
 <!-- API section -->
 [Developer API specs]: ../developer-guide/key_repos.md
