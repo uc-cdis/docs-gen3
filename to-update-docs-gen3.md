@@ -4,20 +4,18 @@ If you would like to submit an update to the Gen3 documentation, we encourage yo
 
 ## Steps to submit your own updates to Gen3 Documentation
 
-### Quickstart with [uv](https://docs.astral.sh/uv/getting-started/installation/)
+### Quickstart [with uv](https://docs.astral.sh/uv/getting-started/installation/)
 
-Clone this repo (or fork it) locally, make sure you have [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, then:
+Clone this repo (or fork it) locally, make sure you [have uv installed](https://docs.astral.sh/uv/getting-started/installation/), then, in the terminal, change to your forked repo directory. Then, run in the terminal:
 
 ```bash
 uv sync
 uv run zensical serve
 ```
 
-and to build:
+That will serve the docs for review to the localhost using the HTML files in `docs-gen3/site` directory, which are built from the files in the `docs-gen3/docs` and either the `mkdocs.yaml` or the `zensical.toml` (whichever is present in the folder). The terminal will show the local URL where the deployment can be reviewed.  
 
-```bash
-uv run zensical build
-```
+You can update and save changes to your local files in `docs-gen3/docs`, `mkdocs.yaml` and/or the `zensical.toml`, and those changes should be immediately deployed in the locally-served docs (although large changes may take slightly longer, and changes may need a tab refresh to be seen).  
 
 ### Detailed Install Guide
 
@@ -51,23 +49,23 @@ In the terminal, from the local `your-forked-docs` repo, [create a new branch](h
 
 ### Make your changes locally
 
-Now, make your desired changes to the files in the `your-forked-docs` repo. As you save the changes, they will immediately show up in the served documentation on localhost, so you can navigate to the pages with your changes and see how they look.
+Now, make your desired changes to the files in the `your-forked-docs` repo. (Note: although the localhost is served from `docs-gen3/site`, these files are built from `docs-gen3/docs` and either the `mkdocs.yaml` or the `zensical.toml`, whichever is present in the folder. Make changes in these files, not the files in `/site`.) As you save the changes, they will immediately show up in the served documentation on localhost, so you can navigate to the pages with your changes and see how they look.
 
 Whenever possible, please avoid using HTML tags to achieve a formatting result. Although Markdown can be limiting in formatting, we have a number of Markdown extensions and Zensical plugins that improve the ability to achieve the desired look.
 
 Here are some common mistakes with formatting in Zensical:
 
-* Beware that Zensical uses a different flavor of Markdown than many other tools. (See more here: https://zensical.org/docs/setup/extensions/python-markdown/). It’s especially finicky about indentations - improper indentation will break a list. For numbered lists, always check that multi-paragraph list items, or list items with code blocks (for example), is indented properly so that the list numbering does not restart after the additional block.
-* Zensical-flavored markdown requires a line before and after elements like headings, code blocks, lists, and image references; otherwise, it will not render elements properly
-* A single carriage return does not render as a line break. You need either two carriage returns or two spaces at the end of the line. For a list, there must be two spaces at the end of the line for the list to render as separate bulleted or numbered items.
+* Beware that Zensical uses a different flavor of Markdown than many other tools. (See more here: https://zensical.org/docs/setup/extensions/python-markdown/). It’s especially finicky about indentations - improper indentation will break a list. For numbered lists, always check that multi-paragraph list items, or list items with code blocks (for example), is indented properly so that the list numbering does not restart after the additional block.  
+* Zensical-flavored markdown requires a line before and after elements like headings, code blocks, lists, and image references; otherwise, it will not render elements properly  
+* A single carriage return does not render as a line break. You need either two carriage returns or two spaces at the end of the line. For a list, there must be two spaces at the end of the line for the list to render as separate bulleted or numbered items.  
 
-When you are done with your local testing - use CTRL+C to quit local serving, or just close the terminal window.
+When you are done with your local testing - use CTRL+C to quit local serving, or just close the terminal window.  
 
-### Commit to your branch, and push changes to your remote fork
+### Commit to your branch, and push changes to your remote fork  
 
 Use Git commands to add your changes to your local branch, commit them to the local repository, then push them to your forked repository. ([See here for more information about using Git for this](https://docs.github.com/en/get-started/using-git).)
 
-Merge the changes into your forked repo. 
+Merge the changes into your forked repo.  
 
 ### Create a PR
 
