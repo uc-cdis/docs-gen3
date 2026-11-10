@@ -4,19 +4,34 @@ If you would like to submit an update to the Gen3 documentation, we encourage yo
 
 ## Steps to submit your own updates to Gen3 Documentation
 
-### Install Zensical
+### Quickstart with [uv](https://docs.astral.sh/uv/getting-started/installation/)
+
+Clone this repo (or fork it) locally, make sure you have [uv](https://docs.astral.sh/uv/getting-started/installation/) installed, then:
+
+```bash
+uv sync
+uv run zensical serve
+```
+
+and to build:
+
+```bash
+uv run zensical build
+```
+
+### Detailed Install Guide
+
+#### Install Zensical
 
 Install Zensical - [installation instructions here](https://zensical.org/docs/get-started/). It is recommended that you install in a [virtual environment](https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment) that also has Python v3.13 or higher.
 
-### Fork the `docs-gen3` Github repo, then clone the fork locally
+#### Fork the `docs-gen3` Github repo, then clone the fork locally
 
-Since you will not have write privileges to the repo, you will need to fork the repo to create a branch and push your changes, then send the changes from your fork back to our repo in a PR.  
+Since you will not have write privileges to the repo, you will need to fork the repo to create a branch and push your changes, then send the changes from your fork back to our repo in a PR.
 
-[Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the [docs-gen3 repository](https://github.com/uc-cdis/docs-gen3), then [clone your fork to create a local copy](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) on your computer and sync between the two locations.  
+[Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) the [docs-gen3 repository](https://github.com/uc-cdis/docs-gen3), then [clone your fork to create a local copy](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) on your computer and sync between the two locations.
 
-#### Check if there are additional dependencies
-
-In your terminal, navigate to the directory with the local clone of your `docs-gen3` fork (for clarity, we will call this `your-forked-docs`). If you installed zensical in a virtual environment, activate it.  
+In your terminal, navigate to the directory with the local clone of your `docs-gen3` fork (for clarity, we will call this `your-forked-docs`). If you installed zensical in a virtual environment, activate it.
 
 ### Locally serve the documentation
 
@@ -26,25 +41,25 @@ This will immediately reflect any saved changes to your local docs-gen3 fork, an
 
 ### Create a new branch in your local forked repo  
 
-You can [configure Git to so that your local forked repo stays synced](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#configuring-git-to-sync-your-fork-with-the-upstream-repository) with any changes that happen in our `docs-gen3` repo.  
+You can [configure Git to so that your local forked repo stays synced](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#configuring-git-to-sync-your-fork-with-the-upstream-repository) with any changes that happen in our `docs-gen3` repo.
 
-Otherwise, check whether your forked repo needs to be synced with the upstream repo. If so, [sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with our docs repo, and then be sure to `checkout main` and `git pull` before making your changes to ensure you are editin the most up-to-date content.  
+Otherwise, check whether your forked repo needs to be synced with the upstream repo. If so, [sync your fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork) with our docs repo, and then be sure to `checkout main` and `git pull` before making your changes to ensure you are editin the most up-to-date content.
 
-In the terminal, from the local `your-forked-docs` repo, [create a new branch](https://www.atlassian.com/git/tutorials/using-branches). Then, use the `git checkout`... command to check out your new branch.  
+In the terminal, from the local `your-forked-docs` repo, [create a new branch](https://www.atlassian.com/git/tutorials/using-branches). Then, use the `git checkout`... command to check out your new branch.
 
 > Remember to follow Gen3's naming conventions for branches and commits as described in the [code contribution section of the docs](https://github.com/uc-cdis/docs-gen3/blob/main/docs/gen3-resources/developer-guide/contribute.md#naming-conventions).
 
 ### Make your changes locally
 
-Now, make your desired changes to the files in the `your-forked-docs` repo. As you save the changes, they will immediately show up in the served documentation on localhost, so you can navigate to the pages with your changes and see how they look.  
+Now, make your desired changes to the files in the `your-forked-docs` repo. As you save the changes, they will immediately show up in the served documentation on localhost, so you can navigate to the pages with your changes and see how they look.
 
 Whenever possible, please avoid using HTML tags to achieve a formatting result. Although Markdown can be limiting in formatting, we have a number of Markdown extensions and Zensical plugins that improve the ability to achieve the desired look.
 
 Here are some common mistakes with formatting in Zensical:
 
-* Beware that Zensical uses a different flavor of Markdown than many other tools. (See more here: https://zensical.org/docs/setup/extensions/python-markdown/). It’s especially finicky about indentations - improper indentation will break a list. For numbered lists, always check that multi-paragraph list items, or list items with code blocks (for example), is indented properly so that the list numbering does not restart after the additional block.  
+* Beware that Zensical uses a different flavor of Markdown than many other tools. (See more here: https://zensical.org/docs/setup/extensions/python-markdown/). It’s especially finicky about indentations - improper indentation will break a list. For numbered lists, always check that multi-paragraph list items, or list items with code blocks (for example), is indented properly so that the list numbering does not restart after the additional block.
 * Zensical-flavored markdown requires a line before and after elements like headings, code blocks, lists, and image references; otherwise, it will not render elements properly
-* A single carriage return does not render as a line break. You need either two carriage returns or two spaces at the end of the line. For a list, there must be two spaces at the end of the line for the list to render as separate bulleted or numbered items.  
+* A single carriage return does not render as a line break. You need either two carriage returns or two spaces at the end of the line. For a list, there must be two spaces at the end of the line for the list to render as separate bulleted or numbered items.
 
 When you are done with your local testing - use CTRL+C to quit local serving, or just close the terminal window.
 
